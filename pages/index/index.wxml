@@ -1,8 +1,14 @@
 <!--index.wxml-->
 <view>
   <view>
-    <view>
-      <mp-searchbar bindselectresult="selectResult" search="{{search}}"></mp-searchbar>
-    </view>
+    <mp-searchbar bindselectresult="selectResult" search="{{search}}"></mp-searchbar>
+  </view>
+  <view>
+    <mp-cells ext-class="my-cells">
+      <mp-cell>
+        <view>{{index+1}}</view>
+        <view>fasdf</view>
+      </mp-cell>
+    </mp-cells>
   </view>
 </view>
