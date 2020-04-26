@@ -1,1 +1,45 @@
-/* pages/user/user.wxss */
+.home{
+  width: 100%;
+}
+.userinfo{
+  width: 100%;
+  height: 400px;
+  background-color: #e1effc;
+}
+.userinfo-head{
+  width: 100%;
+  padding: 20px;
+  display: flex;
+}
+.userinfo-head-img{
+  width: 78px;
+  height: 78px;
+  margin-left: 10px;
+}
+.userinfo-head-img-content{
+  border-radius: 100%;
+  width: 100%;
+  height: 100%;
+}
+.userinfo-head-text{
+  flex: 1;
+  line-height: 78px;
+  margin-left: 20px;
+  font-size: large;
+  font-weight: bolder;
+}
+.userlist{
+  width: 100%;
+  background-color: #eee;
+  margin: 10px;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.userlist-box{
+  width: 20%;
+  height: 100px;
+  background-color: #cbdbf3;
+  border-radius: 10px;
+}

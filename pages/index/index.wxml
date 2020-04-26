@@ -1,14 +1,17 @@
 <!--index.wxml-->
-<view>
-  <view>
-    <mp-searchbar bindselectresult="selectResult" search="{{search}}"></mp-searchbar>
-  </view>
-  <view>
-    <mp-cells ext-class="my-cells">
-      <mp-cell>
-        <view>{{index+1}}</view>
-        <view>fasdf</view>
-      </mp-cell>
-    </mp-cells>
-  </view>
+<view class="home">
+	<view class="wxsearch">
+		<mp-searchbar bindselectresult="selectResult" search="{{search}}"></mp-searchbar>
+	</view>
+	<view class="wxlist">
+		<mp-cells ext-class="my-cells">
+			<mp-cell ext-class="my-cell" link wx:for="{{companylist}}" wx:key="index">
+				<view class="wxlist-item">
+					<view class="sort">{{index+1}}</view>
+					<view class="companyname">{{item.companyname}}</view>
+				</view>
+				<view slot="footer">{{item.province}}</view>
+			</mp-cell>
+		</mp-cells>
+	</view>
 </view>

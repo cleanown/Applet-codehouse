@@ -1,0 +1,25 @@
+.wxsearch {
+  position: fixed;
+  width: 100%;
+  background-color: #fff;
+  top: 0;
+  z-index: 3;
+}
+
+.wxlist {
+  margin-top: 54.39px;
+}
+
+.wxlist-item {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.sort {
+  width: 24px;
+}
+
+.companyname {
+  flex: 1;
+}

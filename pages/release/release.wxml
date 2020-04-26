@@ -1,2 +1,6 @@
 <!--pages/release/release.wxml-->
-<text>pages/release/release.wxml</text>
+<view class="home">
+  <view class="test">
+    <view class="box"> 123456789123456789123456789123456789123456789</view>
+  </view>
+</view>

@@ -1,2 +1,18 @@
 <!--pages/user/user.wxml-->
-<text>pages/user/user.wxml</text>
+<view class="home">
+  <view class="userinfo">
+    <view class="userinfo-head">
+      <view class="userinfo-head-img">
+        <image class="userinfo-head-img-content" src="../../images/userhead.png"></image>
+      </view>
+      <view class="userinfo-head-text">
+        <text>admin</text>
+      </view>
+    </view>
+    <view class="userlist">
+      <view class="userlist-box"></view>
+      <view class="userlist-box"></view>
+      <view class="userlist-box"></view>
+    </view>
+  </view>
+</view>
