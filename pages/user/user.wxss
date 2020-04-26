@@ -1,45 +1,68 @@
-.home{
+.home {
   width: 100%;
 }
-.userinfo{
+
+.userinfo {
+  box-sizing: border-box;
   width: 100%;
-  height: 400px;
+  padding: 10px;
   background-color: #e1effc;
 }
-.userinfo-head{
+
+.userinfo-head {
   width: 100%;
   padding: 20px;
+  box-sizing: border-box;
   display: flex;
 }
-.userinfo-head-img{
+
+.userinfo-head-img {
   width: 78px;
   height: 78px;
   margin-left: 10px;
 }
-.userinfo-head-img-content{
+
+.userinfo-head-img-content {
   border-radius: 100%;
   width: 100%;
   height: 100%;
 }
-.userinfo-head-text{
+
+.userinfo-head-text {
   flex: 1;
   line-height: 78px;
   margin-left: 20px;
   font-size: large;
   font-weight: bolder;
 }
-.userlist{
+
+.userlist {
+  box-sizing: border-box;
+  margin-bottom: 5px;
   width: 100%;
-  background-color: #eee;
-  margin: 10px;
-  overflow: hidden;
+  box-shadow: 1px 1px 0px 1px #bdbbbc;
+  border-radius: 10px;
+  background-color: #cbdbf3;
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
-.userlist-box{
-  width: 20%;
+
+.userlist-box {
+  box-sizing: border-box;
+  width: 33%;
   height: 100px;
-  background-color: #cbdbf3;
   border-radius: 10px;
+  text-align: center;
+}
+
+.userlist-box-num {
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+.userlist-box-desc {
+  font-size: 15px;
+  color: #673AB7;
 }

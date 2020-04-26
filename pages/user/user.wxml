@@ -10,9 +10,26 @@
       </view>
     </view>
     <view class="userlist">
-      <view class="userlist-box"></view>
-      <view class="userlist-box"></view>
-      <view class="userlist-box"></view>
+      <view class="userlist-box">
+        <view class="userlist-box-num">456</view>
+        <view class="userlist-box-desc">获赞</view>
+      </view>|
+      <view class="userlist-box">
+        <view class="userlist-box-num">66</view>
+        <view class="userlist-box-desc">评论</view>
+      </view>|
+      <view class="userlist-box">
+        <view class="userlist-box-num">92</view>
+        <view class="userlist-box-desc">我的文章</view>
+      </view>
     </view>
+  </view>
+  <view>
+    <mp-cells ext-class="my-cells" title="我的">
+      <mp-cell ext-class="my-cell" link wx:for="{{userfun}}" wx:key="index">
+        <image slot="icon" src="{{item.imgUrl}}" style="margin-right: 16px;vertical-align: middle;width:20px; height: 20px;"></image>
+        <view>{{item.fun}}</view>
+      </mp-cell>
+    </mp-cells>
   </view>
 </view>

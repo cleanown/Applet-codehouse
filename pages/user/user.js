@@ -5,7 +5,28 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    userfun: [
+      {
+        imgUrl: '../../images/tabbar/addto.png',
+        fun: '我的文章'
+      },
+      {
+        imgUrl: '../../images/tabbar/addto.png',
+        fun: '我的文章'
+      },
+      {
+        imgUrl: '../../images/tabbar/addto.png',
+        fun: '我的文章'
+      },
+      {
+        imgUrl: '../../images/tabbar/addto.png',
+        fun: '我的文章'
+      },
+      {
+        imgUrl: '../../images/tabbar/addto.png',
+        fun: '我的文章'
+      }
+    ]
   },
 
   /**
