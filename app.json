@@ -2,7 +2,9 @@
   "pages":[
     "pages/index/index",
     "pages/release/release",
-    "pages/user/user"
+    "pages/user/user",
+    "pages/login/login",
+    "pages/register/register"
   ],
   "window":{
     "backgroundTextStyle":"light",

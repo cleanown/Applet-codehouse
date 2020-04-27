@@ -1,0 +1,17 @@
+<!--pages/login/login.wxml-->
+<view class="home">
+  <view class="title">Code House</view>
+  <view class="login">
+    <view class="login-text">用户名：</view>
+    <input class="login-Input" maxlength="10" placeholder="输入你的昵称" />
+    <view class="login-text">密码：</view>
+    <input class="login-Input" password type="text" placeholder="输入密码" />
+  </view>
+  <view class="loginBtn">
+    <button class="loginBtn-btn" style="width: 100%;font-weight: normal" hover-class="hover-class">登录</button>
+  </view>
+  <view class="other">
+    <text>忘记密码</text> |
+    <text bindtap="registerGo">无账号</text>
+  </view>
+</view>

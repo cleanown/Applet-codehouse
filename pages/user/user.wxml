@@ -33,6 +33,6 @@
     </mp-cells>
   </view>
   <view class="userbtn">
-    <button style="width: 100%;font-weight: normal" hover-class="hover-class">退出登录</button>
+    <button style="width: 100%;font-weight: normal" hover-class="hover-class" bindtap="loginGo">退出登录</button>
   </view>
 </view>

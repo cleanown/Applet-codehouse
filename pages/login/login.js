@@ -1,36 +1,16 @@
-// pages/user/user.js
+// pages/login/login.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    userfun: [
-      {
-        imgUrl: '../../images/user/article.png',
-        fun: '发文管理'
-      },
-      {
-        imgUrl: '../../images/user/user.png',
-        fun: '用户管理'
-      },
-      {
-        imgUrl: '../../images/user/collect.png',
-        fun: '收藏'
-      },
-      {
-        imgUrl: '../../images/user/setting.png',
-        fun: '设置'
-      },
-      {
-        imgUrl: '../../images/user/about.png',
-        fun: '关于'
-      }
-    ]
+
   },
-  loginGo: function () {
-    wx.redirectTo({
-      url: '/pages/login/login',
+
+  registerGo: function () {
+    wx.navigateTo({
+      url: '/pages/register/register',
     })
   },
   /**
@@ -51,7 +31,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    wx.hideHomeButton({
+      complete: (res) => {
+        console.log(res)
+      },
+    })
   },
 
   /**

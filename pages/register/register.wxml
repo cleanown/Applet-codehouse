@@ -1,0 +1,16 @@
+<!--pages/register/register.wxml-->
+<view class="home">
+  <view class="title">Code House</view>
+  <view class="register">
+    <view class="register-text">用户名：</view>
+    <input class="register-Input" maxlength="10" placeholder="输入你的昵称" />
+    <view class="register-text">密码：</view>
+    <input class="register-Input" password type="text" placeholder="输入密码" />
+    <view class="register-text">确认密码：</view>
+    <input class="register-Input" password type="text" placeholder="重复输入密码" />
+  </view>
+  <view class="registerBtn">
+    <button class="registerBtn-btn" style="width: 100%;font-weight: normal" hover-class="hover-class">注册</button>
+    <button class="registerBtn-reset" style="width: 100%;font-weight: normal" hover-class="hover-class">重置</button>
+  </view>
+</view>
