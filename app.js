@@ -32,8 +32,10 @@ App({
   //       }
   //     }
   //   })
-  // },
-  // globalData: {
-  //   userInfo: null
+  },
+  globalData: {
+    userInfo: null,
+    loginCode: null,
+    host: 'http://api.cleanown.cn'
   }
 })

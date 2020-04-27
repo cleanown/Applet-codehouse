@@ -1,7 +1,8 @@
 //index.js
 //获取应用实例
 const app = getApp()
-
+import request from '../../api/request'
+import { companylist } from '../../api/api'
 Page({
   data: {
     inputShowed: false,
@@ -41,13 +42,16 @@ Page({
     this.getCompanylsit()
   },
   getCompanylsit: function () {
-    wx.request({
-      url: 'http://api.cleanown.cn/search/companylist',
-      method: "GET",
-      success(res) {
-        console.log(res)
-      }
+    request.get(companylist).then(res => {
+      console.log(res)
     })
+    // wx.request({
+    //   url: 'http://api.cleanown.cn/search/companylist',
+    //   method: "GET",
+    //   success(res) {
+    //     console.log(res)
+    //   }
+    // })
   },
   search: function (value) {
       console.log(value)
@@ -60,4 +64,7 @@ Page({
   selectResult: function (e) {
     console.log('select result', e.detail)
   },
+  itemClick (index) {
+    console.log(index)
+  }
 })

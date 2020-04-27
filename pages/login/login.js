@@ -1,4 +1,6 @@
 // pages/login/login.js
+// import request from '../../api/request'
+// import { login } from '../../api/api'
 Page({
 
   /**
