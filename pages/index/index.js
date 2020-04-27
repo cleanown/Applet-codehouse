@@ -37,18 +37,18 @@ Page({
       search: this.search.bind(this)
     })
   },
-  // onShow: function () {
-  //   this.getCompanylsit()
-  // },
-  // getCompanylsit: function () {
-  //   wx.request({
-  //     url: 'http://api.cleanown.cn/search/companylist',
-  //     method: "GET",
-  //     success(res) {
-  //       console.log(res)
-  //     }
-  //   })
-  // },
+  onShow: function () {
+    this.getCompanylsit()
+  },
+  getCompanylsit: function () {
+    wx.request({
+      url: 'http://api.cleanown.cn/search/companylist',
+      method: "GET",
+      success(res) {
+        console.log(res)
+      }
+    })
+  },
   search: function (value) {
       console.log(value)
       return new Promise((resolve, reject) => {

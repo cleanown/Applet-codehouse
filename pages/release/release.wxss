@@ -2,19 +2,36 @@
 .home{
   width: 100%;
   box-sizing: border-box;
-  padding: 20px;
-  height: 500px;
-  background-color: #eee;
+  padding: 10px;
 }
-.test{
-  width: 100%;
-  padding: 20px;
+.nav{
   box-sizing: border-box;
-  background-color: aqua;
-  word-wrap: break-word;
 }
-.box{
+.company{
+  font-weight: bolder;
+  font-size: 22px;
+  margin-bottom: 13px;
+  color: #9575CD;
+}
+.cpnameInput{
+  border-bottom: 1px solid #999;
+  height: 40px;
+  margin-bottom: 15px;
+}
+.cpDetail{
   width: 100%;
-  height: 100%;
-  background-color: bisque;
+  box-sizing: border-box;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  padding: 5px;
+  box-shadow: 1px 1px 1px 1px #999;
+  height: 100px;
+}
+.cpadressInput{
+  border: 1px solid #999;
+  box-sizing: border-box;
+  padding: 7px;
+  height: 40px;
+  border-radius: 5px;
+  margin-bottom: 15px;
 }

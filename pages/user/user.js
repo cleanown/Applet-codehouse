@@ -7,24 +7,24 @@ Page({
   data: {
     userfun: [
       {
-        imgUrl: '../../images/tabbar/addto.png',
-        fun: '我的文章'
+        imgUrl: '../../images/user/article.png',
+        fun: '发文管理'
       },
       {
-        imgUrl: '../../images/tabbar/addto.png',
-        fun: '我的文章'
+        imgUrl: '../../images/user/user.png',
+        fun: '用户管理'
       },
       {
-        imgUrl: '../../images/tabbar/addto.png',
-        fun: '我的文章'
+        imgUrl: '../../images/user/collect.png',
+        fun: '收藏'
       },
       {
-        imgUrl: '../../images/tabbar/addto.png',
-        fun: '我的文章'
+        imgUrl: '../../images/user/setting.png',
+        fun: '设置'
       },
       {
-        imgUrl: '../../images/tabbar/addto.png',
-        fun: '我的文章'
+        imgUrl: '../../images/user/about.png',
+        fun: '关于'
       }
     ]
   },

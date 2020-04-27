@@ -1,6 +1,15 @@
 <!--pages/release/release.wxml-->
 <view class="home">
-  <view class="test">
-    <view class="box"> 123456789123456789123456789123456789123456789</view>
+  <view class="nav">
+    <view class="company">公司：</view>
+    <input class="cpnameInput" maxlength="10" placeholder="最大输入长度为10" />
+    <view class="company">内容：</view>
+    <textarea class="cpDetail" maxlength="5000" placeholder="输入公司相关信息以及经历" />
+    <view class="company">图片:</view>
+    <input class="cpnameInput" maxlength="10" placeholder="最大输入长度为10" />
+    <view class="company">地址：</view>
+    <input class="cpnameInput" maxlength="10" placeholder="最大输入长度为10" />
+    <view class="company">详细地址:</view>
+    <input class="cpadressInput" maxlength="10" placeholder="请尽量详细" />
   </view>
 </view>

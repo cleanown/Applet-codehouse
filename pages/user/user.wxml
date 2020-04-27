@@ -3,7 +3,7 @@
   <view class="userinfo">
     <view class="userinfo-head">
       <view class="userinfo-head-img">
-        <image class="userinfo-head-img-content" src="../../images/userhead.png"></image>
+        <image class="userinfo-head-img-content" src="../../images/user/userhead.png"></image>
       </view>
       <view class="userinfo-head-text">
         <text>admin</text>
@@ -27,9 +27,12 @@
   <view>
     <mp-cells ext-class="my-cells" title="我的">
       <mp-cell ext-class="my-cell" link wx:for="{{userfun}}" wx:key="index">
-        <image slot="icon" src="{{item.imgUrl}}" style="margin-right: 16px;vertical-align: middle;width:20px; height: 20px;"></image>
+        <image slot="icon" src="{{item.imgUrl}}" style="margin-right: 16px;vertical-align: middle;width:18px; height: 18px;"></image>
         <view>{{item.fun}}</view>
       </mp-cell>
     </mp-cells>
+  </view>
+  <view class="userbtn">
+    <button style="width: 100%;font-weight: normal" hover-class="hover-class">退出登录</button>
   </view>
 </view>

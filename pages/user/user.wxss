@@ -19,7 +19,6 @@
 .userinfo-head-img {
   width: 78px;
   height: 78px;
-  margin-left: 10px;
 }
 
 .userinfo-head-img-content {
@@ -65,4 +64,16 @@
 .userlist-box-desc {
   font-size: 15px;
   color: #673AB7;
+}
+
+.userbtn{
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10px;
+}
+button{
+  background-color: #9575CD;
+}
+.hover-class{
+  background-color: #673AB7;
 }
