@@ -5,9 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    files: [{
-      url: 'http://mmbiz.qpic.cn/mmbiz_png/VUIF3v9blLsicfV8ysC76e9fZzWgy8YJ2bQO58p43Lib8ncGXmuyibLY7O3hia8sWv25KCibQb7MbJW3Q7xibNzfRN7A/0',
-    }],
+    files: [],
     region: ['广东省', '广州市', '海珠区']
   },
 
