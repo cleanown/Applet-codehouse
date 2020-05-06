@@ -3,12 +3,12 @@
   <view class="title">Code House</view>
   <view class="login">
     <view class="login-text">用户名：</view>
-    <input class="login-Input" maxlength="10" placeholder="输入你的昵称" />
+    <input class="login-Input" maxlength="10" placeholder="输入你的昵称" bindinput="loginname" />
     <view class="login-text">密码：</view>
-    <input class="login-Input" password type="text" placeholder="输入密码" />
+    <input class="login-Input" password type="text" placeholder="输入密码" bindinput="loginpwd" />
   </view>
   <view class="loginBtn">
-    <button class="loginBtn-btn" style="width: 100%;font-weight: normal" hover-class="hover-class">登录</button>
+    <button class="loginBtn-btn" style="width: 100%;font-weight: normal" hover-class="hover-class" bindtap="login">登录</button>
   </view>
   <view class="other">
     <text>忘记密码</text> |

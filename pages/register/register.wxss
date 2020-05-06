@@ -31,13 +31,9 @@
 }
 .registerBtn-btn{
   background-color: blue;
+  margin-bottom: 20px;
   color: #fff;
 }
 .hover-class{
   background-color: rgb(4, 4, 175);
-}
-.registerBtn-reset{
-  margin-top: 20px;
-  background-color: blue;
-  color: #fff;
 }

@@ -1,15 +1,34 @@
 // pages/login/login.js
-// import request from '../../api/request'
-// import { login } from '../../api/api'
+import request from '../../api/request'
+import { login } from '../../api/api'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    username: '',
+    password: ''
   },
-
+  loginname: function (e) {
+    this.setData({
+      username: e.detail.value
+    })
+  },
+  loginpwd: function (e) {
+    this.setData({
+      password: e.detail.value
+    })
+  },
+  login: function() {
+    const options = {
+      username: this.username,
+      password: this.password
+    }
+    request.get(login, options).then(res => {
+      console.log(res)
+    })
+  },
   registerGo: function () {
     wx.navigateTo({
       url: '/pages/register/register',

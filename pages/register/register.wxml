@@ -11,6 +11,6 @@
   </view>
   <view class="registerBtn">
     <button class="registerBtn-btn" style="width: 100%;font-weight: normal" hover-class="hover-class">注册</button>
-    <button class="registerBtn-reset" style="width: 100%;font-weight: normal" hover-class="hover-class">重置</button>
+    <button class="registerBtn-btn" style="width: 100%;font-weight: normal" hover-class="hover-class">重置</button>
   </view>
 </view>
