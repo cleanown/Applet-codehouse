@@ -68,6 +68,11 @@ Page({
         password: this.data.password
       }).then((res) => {
         console.log(res)
+      }).catch((res) => {
+        wx.showToast({
+          title: res.msg,
+          icon: 'none'
+        })
       })
     }
   },
