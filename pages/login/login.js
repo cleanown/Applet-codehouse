@@ -21,11 +21,13 @@ Page({
     })
   },
   login: function() {
-    const options = {
-      username: this.username,
-      password: this.password
+    console.log(this.data.username)
+    console.log(this.data.password)
+    const data = {
+      username: this.data.username,
+      password: this.data.password
     }
-    request.get(login, options).then(res => {
+    request.post(login, data).then(res => {
       console.log(res)
     })
   },

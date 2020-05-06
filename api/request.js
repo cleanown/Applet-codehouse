@@ -7,7 +7,7 @@ const request = (url, options) => {
       method: options.method,
       data: options.method === 'GET' ? options.data : JSON.stringify(options.data),
       header: {
-        'Content-Type': 'application/json; charset=UTF-8'
+        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
       },
       success(request) {
         if (request.data.code === 200) {
