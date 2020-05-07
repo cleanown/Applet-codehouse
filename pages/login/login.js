@@ -2,7 +2,6 @@
 import request from '../../api/request'
 import { login } from '../../api/api'
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -21,15 +20,45 @@ Page({
     })
   },
   login: function() {
-    console.log(this.data.username)
-    console.log(this.data.password)
-    const data = {
-      username: this.data.username,
-      password: this.data.password
+    if (this.data.username === '') {
+      wx.showToast({
+        title: '用户名不得为空',
+        icon: 'none'
+      })
+    } else if (this.data.password === '') {
+      wx.showToast({
+        title: '密码不得为空',
+        icon: 'none'
+      })
+    } else {
+      console.log(this.data.username)
+      console.log(this.data.password)
+      const data = {
+        username: this.data.username,
+        password: this.data.password
+      }
+      request.post(login, data).then(res => {
+        if (res.code === 200) {
+          console.log(res)
+          wx.setStorageSync('token', res.data.id)
+          wx.switchTab({
+            url: '/pages/index/index',
+          })
+        } else {
+          wx.showToast({
+            title: res.msg,
+            icon: 'none'
+          })
+        }
+      }).catch((res) => {
+        console.log(res)
+        wx.showToast({
+          title: res.msg,
+          icon: 'none'
+        })
+      })
     }
-    request.post(login, data).then(res => {
-      console.log(res)
-    })
+    
   },
   registerGo: function () {
     wx.navigateTo({

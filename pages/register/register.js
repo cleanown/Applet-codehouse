@@ -68,7 +68,11 @@ Page({
         password: this.data.password
       }).then((res) => {
         console.log(res)
+        wx.navigateTo({
+          url: '/pages/login/login',
+        })
       }).catch((res) => {
+        console.log(res)
         wx.showToast({
           title: res.msg,
           icon: 'none'
