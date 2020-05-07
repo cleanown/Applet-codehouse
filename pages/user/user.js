@@ -1,10 +1,13 @@
 // pages/user/user.js
+import request from '../../api/request'
+import { userinfo } from '../../api/api'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    userinfo: {},
     userfun: [
       {
         imgUrl: '../../images/user/article.png',
@@ -29,6 +32,7 @@ Page({
     ]
   },
   loginGo: function () {
+    wx.removeStorageSync('token')
     wx.redirectTo({
       url: '/pages/login/login',
     })
@@ -51,7 +55,20 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    request.get(userinfo).then((res) => {
+      if (res.code === 200) {
+        console.log(res)
+        this.setData({
+          userinfo: res.data
+        })
+        getApp().globalData.userInfo = res.data
+      } else {
+        wx.showToast({
+          title: res.msg,
+          icon: 'none'
+        })
+      }
+    })
   },
 
   /**

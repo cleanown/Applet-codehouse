@@ -2,6 +2,13 @@ const app = getApp()
 
 const request = (url, options) => {
   return new Promise((resolve, reject) => {
+    if (wx.getStorageSync('token')) {
+      var token = wx.getStorageSync('token')
+    } else {
+      wx.reLaunch({
+        url: '/pages/login/login'
+      })
+    }
     wx.request({
       url: `${app.globalData.host}${url}`,
       method: options.method,
@@ -9,7 +16,8 @@ const request = (url, options) => {
       header: {
         // 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
         'Content-Type': 'application/json; charset=UTF-8',
-        'x-token': 'x-token'
+        // 'x-token': 'x-token'
+        'authorization': token
       },
       success(request) {
         if (request.data.code === 200) {
@@ -22,6 +30,7 @@ const request = (url, options) => {
         reject(error.data)
       }
     })
+    
   })
 }
 

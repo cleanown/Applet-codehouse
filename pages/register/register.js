@@ -68,9 +68,15 @@ Page({
         password: this.data.password
       }).then((res) => {
         console.log(res)
-        wx.navigateTo({
-          url: '/pages/login/login',
+        wx.showToast({
+          title: '注册成功',
+          icon: 'loading'
         })
+        setTimeout(() => {
+          wx.navigateTo({
+            url: '/pages/login/login',
+          })
+        }, 1500)
       }).catch((res) => {
         console.log(res)
         wx.showToast({

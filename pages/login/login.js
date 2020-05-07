@@ -41,9 +41,14 @@ Page({
         if (res.code === 200) {
           console.log(res)
           wx.setStorageSync('token', res.data.id)
-          wx.switchTab({
-            url: '/pages/index/index',
+          wx.showToast({
+            title: '登录成功',
           })
+          setTimeout(() => {
+            wx.switchTab({
+              url: '/pages/index/index'
+            })
+          }, 1500)
         } else {
           wx.showToast({
             title: res.msg,

@@ -7,31 +7,7 @@ Page({
   data: {
     inputShowed: false,
     inputVal: "",
-    companylist: [{
-      companyname: '广州千锋有限责任公司',
-      province: '广州市'
-    }, {
-      companyname: '广州千锋有限责任公司',
-      province: '广州市'
-    }, {
-      companyname: '广州千锋有限责任公司',
-      province: '广州市'
-    }, {
-      companyname: '广州千锋有限责任公司',
-      province: '广州市'
-    }, {
-      companyname: '广州千锋有限责任公司',
-      province: '广州市'
-    }, {
-      companyname: '广州千锋有限责任公司',
-      province: '广州市'
-    }, {
-      companyname: '广州千锋有限责任公司',
-      province: '广州市'
-    }, {
-      companyname: '广州千锋有限责任公司',
-      province: '广州市'
-    }]
+    companylist: {}
   },
   onLoad() {
     this.setData({
@@ -43,15 +19,18 @@ Page({
   },
   getCompanylsit: function () {
     request.get(companylist).then(res => {
-      console.log(res)
+      if (res.code === 200) {
+        console.log(res)
+        this.setData({
+          companylist: res.data
+        })
+      } else {
+        wx.showToast({
+          title: res.msg,
+          icon: 'none'
+        })
+      }
     })
-    // wx.request({
-    //   url: 'http://api.cleanown.cn/search/companylist',
-    //   method: "GET",
-    //   success(res) {
-    //     console.log(res)
-    //   }
-    // })
   },
   search: function (value) {
       console.log(value)

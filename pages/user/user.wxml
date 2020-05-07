@@ -3,10 +3,10 @@
   <view class="userinfo">
     <view class="userinfo-head">
       <view class="userinfo-head-img">
-        <image class="userinfo-head-img-content" src="../../images/user/userhead.png"></image>
+        <image class="userinfo-head-img-content" src="{{userinfo.headimg}}"></image>
       </view>
       <view class="userinfo-head-text">
-        <text>admin</text>
+        <text>{{userinfo.username}}</text>
       </view>
     </view>
     <view class="userlist">
