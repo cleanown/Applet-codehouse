@@ -1,12 +1,16 @@
 <!--index.wxml-->
 <view class="home">
 	<view class="wxsearch">
-		<mp-searchbar bindselectresult="selectResult" search="{{search}}"></mp-searchbar>
+		<view class="wxsearch-detail">
+			<icon type="search"></icon>
+			<input bindinput="search" placeholder="输入你想搜索的公司" value="{{searchvalue}}"/>
+		</view>
+		<view class="wxsearch-cancel" wx:if="{{searchvalue.length>0}}" bindtap="searchclear">取消</view>
 	</view>
 	<view class="wxlist">
 		<mp-cells ext-class="my-cells">
-			<mp-cell ext-class="my-cell" link wx:for="{{companylist}}" wx:key="index">
-				<view class="wxlist-item" bindtap="itemClick(index)">
+			<mp-cell ext-class="my-cell" link wx:for="{{companylist}}" wx:key="index" bindtap="itemClick" id="{{item._id}}">
+				<view class="wxlist-item">
 					<view class="sort">{{index+1}}</view>
 					<view class="companyname">{{item.companyname}}</view>
 				</view>
