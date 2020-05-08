@@ -11,23 +11,28 @@ Page({
     userfun: [
       {
         imgUrl: '../../images/user/article.png',
-        fun: '发文管理'
+        fun: '发文管理',
+        role: 2
       },
       {
         imgUrl: '../../images/user/user.png',
-        fun: '用户管理'
+        fun: '用户管理',
+        role: 2
       },
       {
         imgUrl: '../../images/user/collect.png',
-        fun: '收藏'
+        fun: '收藏',
+        role: 1
       },
       {
         imgUrl: '../../images/user/setting.png',
-        fun: '设置'
+        fun: '设置',
+        role: 1
       },
       {
         imgUrl: '../../images/user/about.png',
-        fun: '关于'
+        fun: '关于',
+        role: 1
       }
     ]
   },

@@ -26,7 +26,7 @@
   </view>
   <view>
     <mp-cells ext-class="my-cells" title="我的">
-      <mp-cell ext-class="my-cell" link wx:for="{{userfun}}" wx:key="index">
+      <mp-cell ext-class="my-cell" link wx:if="{{item.role <= userinfo.role}}" wx:for="{{userfun}}" wx:key="index">
         <image slot="icon" src="{{item.imgUrl}}" style="margin-right: 16px;vertical-align: middle;width:18px; height: 18px;"></image>
         <view>{{item.fun}}</view>
       </mp-cell>

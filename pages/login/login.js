@@ -44,11 +44,9 @@ Page({
           wx.showToast({
             title: '登录成功',
           })
-          setTimeout(() => {
-            wx.switchTab({
-              url: '/pages/index/index'
-            })
-          }, 1500)
+          wx.switchTab({
+            url: '/pages/index/index'
+          })
         } else {
           wx.showToast({
             title: res.msg,
