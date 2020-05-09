@@ -19,7 +19,30 @@
     <view class="input-down" bindtap="inputClose">
       <image class="input-down-img" src="../../images/arrow_down.png" mode="aspectFill"></image>
     </view>
-    <textarea class="input-detail" fixed="true"></textarea>
-    <button class="input-btn" size="mini">发送</button>
+    <textarea class="input-detail" fixed="true" auto-focus="true" show-confirm-bar="{{false}}"></textarea>
+    <button class="input-btn" size="mini" hover-class="hover-class">发送</button>
+  </view>
+  <view class="comment">
+    <view class="comment-title">评论 :</view>
+    <view class="comment-item">
+      <view class="comment-items">
+        <view class="comment-items-user">
+          <view class="comment-item-user-head">
+            <image class="comment-item-user-head-img" src="https://feiyan-img.oss-cn-shenzhen.aliyuncs.com/head/92403a38bb8848309fea72a14092734f.png"></image>
+          </view>
+          <view class="comment-item-user-name">solace</view>
+        </view>
+        <view class="comment-detail">
+        科技活动房卡合肥会计师是框架的复活卡就很舒服的啥都复活卡就是负担
+        </view>
+        <view class="comment-last">
+          <view class="comment-last-set">
+            <view class="comment-last-set-reply">回复</view>
+            <view class="comment-last-set-delete">删除</view>
+          </view>
+          <view class="comment-last-time">评论时间： 2020-08-02 13:50:22</view>
+        </view>
+      </view>
+    </view>
   </view>
 </view>

@@ -2,6 +2,7 @@
 .home{
   box-sizing: border-box;
   width: 100%;
+  padding-bottom: 46px;
 }
 .cp{
   box-sizing: border-box;
@@ -65,11 +66,78 @@
 }
 .input-detail{
   flex: 1;
-  height: 32px;
+  height: 30px;
   background-color: #fff;
   margin-right: 10px;
+  border-radius: 4px;
+  padding: 3px;
 }
 .input-btn{
   margin-right: 10px;
+  background-color: #311B92;
+  color: #fff;
+  box-shadow: 1px 1px 1px #000;
+  font-weight: normal;
+}
+.hover-class{
+  background-color: rgb(4, 4, 175);
+}
+.comment{
+  box-sizing: border-box;
+}
+.comment-title{
+  box-sizing: border-box;
+  border-top: 1px dashed #999;
+  border-bottom: 1px dashed #999;
+  padding: 8px;
+  font-size: 20px;
+}
+.comment-item{
+  box-sizing: border-box;
+  padding: 20px;
+}
+.comment-items{
+  border-bottom: 1px solid #999;
+}
+.comment-items-user{
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.comment-item-user-head{
+  height: 40px;
+  width: 40px;
+}
+.comment-item-user-head-img{
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+}
+.comment-item-user-name{
+  margin-left: 10px;
+}
+.comment-detail{
+  text-indent: 2em;
+}
+.comment-last{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.comment-last-set{
+  display: flex;
+}
+.comment-last-set-reply{
   color: #311B92;
+}
+.comment-last-set-delete{
+  text-indent: 1em;
+  color: red;
+}
+.comment-last-time{
+  font-size: 12px;
+  color: #999;
 }
