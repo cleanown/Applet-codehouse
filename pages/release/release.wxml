@@ -2,7 +2,7 @@
 <view class="home">
 	<view class="nav">
 		<view class="company">公司：</view>
-		<input class="cpnameInput" maxlength="12" placeholder="最大输入长度为12" bindinput="cpName" value="{{cpName}}"/>
+		<input class="cpnameInput" maxlength="15" placeholder="最大输入长度为15" bindinput="cpName" value="{{cpName}}"/>
 		<view class="company">内容：</view>
 		<textarea class="cpDetail" maxlength="5000" placeholder="输入公司相关信息以及经历" show-confirm-bar="{{false}}" bindinput="cpDetail" value="{{cpDetail}}"/>
 		<view class="company">图片:</view>

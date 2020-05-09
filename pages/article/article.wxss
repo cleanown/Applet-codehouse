@@ -94,7 +94,7 @@
 }
 .comment-item{
   box-sizing: border-box;
-  padding: 20px;
+  padding: 10px 20px;
 }
 .comment-items{
   border-bottom: 1px solid #999;
@@ -139,5 +139,10 @@
 }
 .comment-last-time{
   font-size: 12px;
+  color: #999;
+}
+.comment-none{
+  margin: 10px;
+  text-align: center;
   color: #999;
 }

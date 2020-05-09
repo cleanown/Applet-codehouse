@@ -5,6 +5,8 @@ const userinfo = '/user/userinfo'
 const searchlist = '/search/companylist'
 const release = '/company/add'
 const companydetail = '/company/companyDetail'
+const commentget = '/comment/get/'
+const commentadd = '/comment/add'
 
 module.exports = {
   login,
@@ -13,5 +15,7 @@ module.exports = {
   userinfo,
   searchlist,
   release,
-  companydetail
+  companydetail,
+  commentget,
+  commentadd
 }

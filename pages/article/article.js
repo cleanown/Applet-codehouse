@@ -1,19 +1,22 @@
 // pages/article/article.js
 import request from '../../api/request'
-import { companydetail } from '../../api/api'
+import { companydetail, commentget, commentadd } from '../../api/api'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    companyid: '',
     company: {},
+    comment: {},
     releaseTime: '',
     starcolor: 'black',
     startype: 'outline',
     likecolor: 'black',
     liketype: 'outline',
     likenum: 55,
+    commentshow: false,
     inputshow: false
   },
   star: function () {
@@ -66,11 +69,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
+    this.setData({
+      companyid: options.id
+    })
+    console.log(this.data.companyid)
     request.get(companydetail, {
       companyid: options.id
     }).then((res) => {
-      console.log(res)
+      // console.log(res)
       if (res.code === 200) {
         this.setData({
           company: res.data,
@@ -98,6 +104,28 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    request.get(`${commentget}${this.data.companyid}`).then((res) => {
+      console.log(res)
+      if (res.code === 200) {
+        if (res.msg === '查询成功') {
+          this.setData ({
+            commentshow: true
+          })
+          this.setData({
+            comment: res.data
+          })
+          console.log(this.data.comment)
+        } else {
+          this.setData ({
+            commentshow: false
+          })
+        }
+      } else {
+        wx.showToast({
+          title: res.msg,
+        })
+      }
+    })
   },
 
   /**
