@@ -1,1 +1,41 @@
 /* pages/article/article.wxss */
+.home{
+  box-sizing: border-box;
+  width: 100%;
+}
+.cp{
+  box-sizing: border-box;
+  margin: 10px;
+}
+.cpname{
+  font-size: 25px;
+  font-weight: bolder;
+  margin-bottom: 10px;
+}
+.cpdetail{
+  text-indent: 2em;
+  padding: 10px;
+}
+.cplast{
+  margin-right: 10px;
+}
+.cp-auth{
+  text-align: right;
+  margin-top: 10px;
+}
+.icon{
+  position: fixed;
+  width: 100%;
+  height: 46px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  box-sizing: border-box;
+  padding-right: 10px;
+  bottom: 0;
+  background-color: #eee;
+}
+.icons{
+  margin-right: 10px;
+}

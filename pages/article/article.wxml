@@ -1,2 +1,18 @@
 <!--pages/article/article.wxml-->
-<text>pages/article/article.wxml</text>
+<view class="home">
+  <view class="cp">
+    <view class="cpname">{{company.companyname}}</view>
+    <view class="cpdetail">{{company.companydetail}}</view>
+    <view class="cplast">
+      <view class="cp-auth">作者：{{company.userinfo.username}}</view>
+      <view class="cp-auth">发布时间：{{releaseTime}}</view>
+    </view>
+  </view>
+  <view class="icon">
+    <mp-icon class="icons" icon="star" color="black" type="outline" size="25"></mp-icon>
+    <mp-icon icon="like" color="black" type="outline" size="25"></mp-icon>
+    <view class="icons">56</view>
+    <mp-icon icon="comment" color="black" size="25"></mp-icon>
+    <view class="icons">45</view>
+  </view>
+</view>

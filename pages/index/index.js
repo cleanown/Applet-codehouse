@@ -57,5 +57,8 @@ Page({
   },
   itemClick: function (e) {
     console.log(e.currentTarget.id)
+    wx.navigateTo({
+      url: '/pages/article/article?id='+e.currentTarget.id+'',
+    })
   }
 })

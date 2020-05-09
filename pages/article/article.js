@@ -1,18 +1,39 @@
 // pages/article/article.js
+import request from '../../api/request'
+import { companydetail } from '../../api/api'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    company: {},
+    releaseTime: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(options)
+    request.get(companydetail, {
+      companyid: options.id
+    }).then((res) => {
+      console.log(res)
+      if (res.code === 200) {
+        this.setData({
+          company: res.data,
+          releaseTime: res.data.meta.createAt.slice(0,10) + ' ' + res.data.meta.createAt.slice(11,19)
+        })
+        console.log(this.data.releaseTime)
+        console.log(this.data.company)
+      } else {
+        wx.showToast({
+          title: res.msg,
+          icon: 'none'
+        })
+      }
+    })
   },
 
   /**
@@ -26,7 +47,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
   },
 
   /**

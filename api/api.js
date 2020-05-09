@@ -4,6 +4,7 @@ const register = '/user/sign'
 const userinfo = '/user/userinfo'
 const searchlist = '/search/companylist'
 const release = '/company/add'
+const companydetail = '/company/companyDetail'
 
 module.exports = {
   login,
@@ -11,5 +12,6 @@ module.exports = {
   register,
   userinfo,
   searchlist,
-  release
+  release,
+  companydetail
 }
