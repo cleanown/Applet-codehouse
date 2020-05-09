@@ -5,7 +5,7 @@
 }
 .cp{
   box-sizing: border-box;
-  margin: 10px;
+  margin: 15px;
 }
 .cpname{
   font-size: 25px;
@@ -14,7 +14,7 @@
 }
 .cpdetail{
   text-indent: 2em;
-  padding: 10px;
+  padding: 5px;
 }
 .cplast{
   margin-right: 10px;
@@ -35,7 +35,41 @@
   padding-right: 10px;
   bottom: 0;
   background-color: #eee;
+  z-index: 2;
 }
 .icons{
   margin-right: 10px;
+}
+.input{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 46px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 3;
+  box-sizing: border-box;
+  background-color: #B39DDB;
+}
+.input-down{
+  width: 46px;
+  height: 46px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.input-down-img{
+  width: 50%;
+  height: 50%;
+}
+.input-detail{
+  flex: 1;
+  height: 32px;
+  background-color: #fff;
+  margin-right: 10px;
+}
+.input-btn{
+  margin-right: 10px;
+  color: #311B92;
 }

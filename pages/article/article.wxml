@@ -9,10 +9,17 @@
     </view>
   </view>
   <view class="icon">
-    <mp-icon class="icons" icon="star" color="black" type="outline" size="25"></mp-icon>
-    <mp-icon icon="like" color="black" type="outline" size="25"></mp-icon>
-    <view class="icons">56</view>
-    <mp-icon icon="comment" color="black" size="25"></mp-icon>
+    <mp-icon class="icons" icon="star" color="{{starcolor}}" type="{{startype}}" size="25" bindtap="star"></mp-icon>
+    <mp-icon icon="like" color="{{likecolor}}" type="{{liketype}}" size="25" bindtap="like"></mp-icon>
+    <view class="icons">{{likenum}}</view>
+    <mp-icon icon="comment" color="black" size="25" bindtap="comment"></mp-icon>
     <view class="icons">45</view>
+  </view>
+  <view class="input" wx:if="{{inputshow}}">
+    <view class="input-down" bindtap="inputClose">
+      <image class="input-down-img" src="../../images/arrow_down.png" mode="aspectFill"></image>
+    </view>
+    <textarea class="input-detail" fixed="true"></textarea>
+    <button class="input-btn" size="mini">发送</button>
   </view>
 </view>
