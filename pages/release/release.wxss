@@ -14,6 +14,10 @@
   margin-bottom: 15px;
   color: #9575CD;
 }
+.cpCity{
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
 .cpnameInput{
   border-bottom: 1px solid #999;
   height: 40px;

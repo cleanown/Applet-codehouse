@@ -4,7 +4,8 @@
     "pages/release/release",
     "pages/user/user",
     "pages/login/login",
-    "pages/register/register"
+    "pages/register/register",
+    "pages/article/article"
   ],
   "window":{
     "backgroundTextStyle":"light",

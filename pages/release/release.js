@@ -1,12 +1,17 @@
 // pages/release/release.js
+import request from '../../api/request'
+import { release } from '../../api/api'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    cpName: '',
+    cpDetail: '',
     files: [],
-    region: ['广东省', '广州市', '海珠区']
+    cpAdress: '',
+    region: []
   },
 
   /**
@@ -17,6 +22,24 @@ Page({
       selectFile: this.selectFile.bind(this),
       uplaodFile: this.uplaodFile.bind(this)
     })
+  },
+  cpName: function (e) {
+    this.setData({
+      cpName: e.detail.value
+    })
+    console.log(this.data.cpName)
+  },
+  cpDetail: function (e) {
+    this.setData({
+      cpDetail: e.detail.value
+    })
+    console.log(this.data.cpDetail)
+  },
+  cpAdress: function (e) {
+    this.setData({
+      cpAdress: e.detail.value
+    })
+    console.log(this.data.cpAdress)
   },
   chooseImage: function (e) {
     var that = this;
@@ -61,8 +84,51 @@ Page({
     this.setData({
       region: e.detail.value
     })
+    console.log(`省：${this.data.region.slice(0,1).join()}`)
   },
-  
+  release: function () {
+    if (this.data.cpName === '') {
+      wx.showToast({
+        title: '公司名不得为空',
+        icon: 'none'
+      })
+    } else if (this.data.cpDetail === '') {
+      wx.showToast({
+        title: '内容不得为空',
+        icon: 'none'
+      })
+    } else if (this.data.region == '') {
+      wx.showToast({
+        title: '请选择地址',
+        icon: 'none'
+      })
+    } else if (this.data.cpAdress == '') {
+      wx.showToast({
+        title: '请填写详细地址',
+        icon: 'none'
+      })
+    } else {
+      const data = {
+        companyname: this.data.cpName,
+        companydetail: this.data.cpDetail,
+        province: this.data.region.slice(0,1).join(),
+        city: this.data.cpAdress
+      }
+      request.post(release, data).then((res) => {
+        console.log(res)
+        if (res.code === 200) {
+          wx.showToast({
+            title: '成功，等待审核'
+          })
+          setTimeout(() => {
+            wx.switchTab({
+              url: '/pages/index/index',
+            })
+          }, 1500)
+        }
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
