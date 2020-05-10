@@ -3,20 +3,22 @@
 	<view class="wxsearch">
 		<view class="wxsearch-detail">
 			<icon type="search"></icon>
-			<input bindinput="search" placeholder="输入你想搜索的公司" value="{{searchvalue}}"/>
+			<input bindinput="search" placeholder="输入用户名" value="{{searchvalue}}"/>
 		</view>
 		<view class="wxsearch-cancel" wx:if="{{searchvalue.length>0}}" bindtap="searchclear">取消</view>
 	</view>
 	<view class="wxlist">
 		<mp-cells ext-class="my-cells">
-			<mp-cell ext-class="my-cell" link wx:for="{{users}}" wx:key="index" bindtap="itemClick" id="{{item._id}}">
+			<mp-cell ext-class="my-cell" link wx:for="{{users}}" wx:key="index" bindtap="itemClick" data-id="{{item._id}}">
 				<view class="wxlist-item">
-					<view class="sort">{{index+1}}</view>
+					<view class="sort">
+						<image class="sort-img" src="{{item.headimg}}"></image>
+					</view>
 					<view class="companyname">{{item.username}}</view>
 				</view>
 				<view slot="footer">
 					<view wx:if="{{item.role<=1}}">普通用户</view>
-					<view wx:else="{{item.role>1}}">管理员</view>
+					<view wx:else>管理员</view>
 				</view>
 			</mp-cell>
 		</mp-cells>

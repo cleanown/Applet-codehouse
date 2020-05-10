@@ -7,9 +7,26 @@ Page({
    * 页面的初始数据
    */
   data: {
-    users: {}
+    users: {},
+    searchvalue: ''
   },
-
+  search: function (e) {
+    this.setData({
+      searchvalue: e.detail.value
+    })
+    console.log(this.data.searchvalue)
+    console.log('%c查询：', 'color: yellow')
+    this.onShow()
+  },
+  searchclear: function () {
+    this.setData({
+      searchvalue: ''
+    })
+    this.onShow()
+  },
+  itemClick: function (e) {
+    console.log(e.currentTarget.dataset.id)
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -28,7 +45,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    request.get(getalluser).then((res) => {
+    request.get(getalluser, {
+      hotkey: this.data.searchvalue
+    }).then((res) => {
       if (res.code === 200) {
         this.setData({
           users: res.data.users

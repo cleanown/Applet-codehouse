@@ -9,7 +9,7 @@
 	</view>
 	<view class="wxlist">
 		<mp-cells ext-class="my-cells">
-			<mp-cell ext-class="my-cell" link wx:for="{{companylist}}" wx:key="index" bindtap="itemClick" id="{{item._id}}">
+			<mp-cell ext-class="my-cell" link wx:for="{{companylist}}" wx:key="index" bindtap="itemClick" data-id="{{item._id}}">
 				<view class="wxlist-item">
 					<view class="sort">{{index+1}}</view>
 					<view class="companyname">{{item.companyname}}</view>

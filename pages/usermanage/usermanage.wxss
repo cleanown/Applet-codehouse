@@ -30,13 +30,18 @@
 .wxlist-item {
   display: flex;
   justify-content: space-around;
-  text-align: center;
 }
 
 .sort {
-  width: 24px;
+  width: 30px;
+  height: 30px;
 }
-
+.sort-img{
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+}
 .companyname {
   flex: 1;
+  margin-left: 15px;
 }

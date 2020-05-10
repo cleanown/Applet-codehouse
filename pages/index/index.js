@@ -59,9 +59,9 @@ Page({
   },
   itemClick: function (e) {
     console.log('%c带参跳转（id）:','color: yellow')
-    console.log(e.currentTarget.id)
+    console.log(e.currentTarget.dataset.id)
     wx.navigateTo({
-      url: '/pages/article/article?id='+e.currentTarget.id+'',
+      url: '/pages/article/article?id='+e.currentTarget.dataset.id+'',
     })
   }
 })
