@@ -7,7 +7,7 @@
     <view class="cpdetail">{{company.companydetail}}</view>
     <view class="cplast">
       <view class="cp-auth">作者：{{company.userinfo.username}}</view>
-      <view class="cp-auth">发布时间：{{filter.dateFormatStr(company.meta.createAt)}}</view>
+      <view class="cp-auth">发布时间：{{releaseTime}}</view>
     </view>
   </view>
   <!-- 底部 -->
@@ -23,8 +23,8 @@
     <view class="input-down" bindtap="inputClose">
       <image class="input-down-img" src="../../images/arrow_down.png" mode="aspectFill"></image>
     </view>
-    <textarea class="input-detail" fixed="true" auto-focus="true" show-confirm-bar="{{false}}" placeholder="评论：" bindinput="{{commentValue}}" value="{{cValue}}"></textarea>
-    <button class="input-btn" size="mini" hover-class="hover-class">发送</button>
+    <textarea class="input-detail" fixed="true" auto-focus="true" show-confirm-bar="{{false}}" placeholder="评论：" bindinput="commentValue" value="{{commentvalue}}"></textarea>
+    <button class="input-btn" size="mini" hover-class="hover-class" bindtap="commentSent">发送</button>
   </view>
   <!-- 评论内容 -->
   <view class="comment">
@@ -49,13 +49,13 @@
             <view class="comment-last-time">评论时间：{{filter.dateFormatStr(item.meta.createAt)}}</view>
           </view>
           <!-- 子评论，回复 -->
-          <view style="border-top: 1px dotted #ccc;padding:20px">
-            <view class="comment-items" wx:for="{{item.children}}" wx:key="index">
+          <view style="border-top: 1px dotted #ccc;padding:20px;" wx:for="{{item.children}}" wx:key="index" wx:if="item.children.length>0" >
+            <view class="comment-items">
               <view class="comment-items-user">
                 <view class="comment-item-user-head">
                   <image class="comment-item-user-head-img" src="{{item.userinfo.headimg}}"></image>
                 </view>
-                <view class="comment-item-user-name">{{item.userinfo.username}}</view>
+                <view class="comment-item-user-name" style="color: #999">{{item.userinfo.username}}</view>
               </view>
               <view class="comment-detail">
                 <view style="float: left;color: #B388FF;">@{{item.linkname}}</view>

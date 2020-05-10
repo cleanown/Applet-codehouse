@@ -9,15 +9,16 @@ Page({
   data: {
     companyid: '',
     company: {},
+    releaseTime: '',
     comment: {},
-    cValue: '',
     starcolor: 'black',
     startype: 'outline',
     likecolor: 'black',
     liketype: 'outline',
     likenum: 55,
     commentshow: false,
-    inputshow: false
+    inputshow: false,
+    commentvalue: ''
   },
   star: function () {
     if (this.data.starcolor === 'black') {
@@ -67,9 +68,29 @@ Page({
   },
   commentValue: function (e) {
     this.setData({
-      cValue: e.detail.value
+      commentvalue: e.detail.value
     })
-    console.log(this.data.cValue)
+    console.log(this.data.commentvalue)
+  },
+  commentSent: function () {
+    const data = {
+      commentdetail: this.data.commentvalue,
+      companyid: this.data.companyid,
+    }
+    request.post(commentadd, data).then((res) => {
+      if (res.code === 200) {
+        console.log(res)
+        this.onShow()
+        this.setData({
+          commentvalue: ''
+        })
+      } else {
+        wx.showToast({
+          title: res.msg,
+          icon: 'none'
+        })
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面加载
@@ -85,9 +106,9 @@ Page({
       // console.log(res)
       if (res.code === 200) {
         this.setData({
-          company: res.data
+          company: res.data,
+          releaseTime: res.data.meta.createAt.slice(0,10) + ' ' + res.data.meta.createAt.slice(11,19)
         })
-        console.log(this.data.releaseTime)
         console.log(this.data.company)
       } else {
         wx.showToast({
