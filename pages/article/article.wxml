@@ -57,18 +57,18 @@
             <view class="comment-last-time">评论时间：{{filter.dateFormatStr(item.meta.createAt)}}</view>
           </view>
           <!-- 子评论，回复 -->
-          <view style="border-top: 1px dotted #ccc;padding:20px;" wx:for="{{item.children}}" wx:key="index" wx:if="item.children.length>0" >
+          <view style="border-top: 1px dotted #ccc;padding:20px;" wx:for="{{item.children}}" wx:for-item="children" wx:key="index" wx:if="item.children.length>0" >
             <view class="comment-items">
               <view class="comment-items-user">
                 <view class="comment-item-user-head">
-                  <image class="comment-item-user-head-img" src="{{item.userinfo.headimg}}"></image>
+                  <image class="comment-item-user-head-img" src="{{children.userinfo.headimg}}"></image>
                 </view>
-                <view class="comment-item-user-name" style="color: #999">{{item.userinfo.username}}</view>
+                <view class="comment-item-user-name" style="color: #999">{{children.userinfo.username}}</view>
               </view>
               <view class="comment-detail">
-                <view style="float: left;color: #B388FF;">@{{item.linkname}}</view>
+                <view style="float: left;color: #B388FF;">@{{children.linkname}}</view>
                 <view>
-                  {{item.commentdetail}}
+                  {{children.commentdetail}}
                 </view>
               </view>
               <view class="comment-last">
@@ -76,7 +76,7 @@
                   <view class="comment-last-set-reply" bindtap="childrenReply">回复</view>
                   <view class="comment-last-set-delete">删除</view>
                 </view>
-                <view class="comment-last-time">评论时间：{{filter.dateFormatStr(item.meta.createAt)}}</view>
+                <view class="comment-last-time">评论时间：{{filter.dateFormatStr(children.meta.createAt)}}</view>
               </view>
             </view>
           </view>
