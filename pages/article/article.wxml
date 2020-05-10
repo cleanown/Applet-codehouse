@@ -51,7 +51,7 @@
           </view>
           <view class="comment-last" style="margin-bottom: 30px;">
             <view class="comment-last-set">
-              <view class="comment-last-set-reply" bindtap="reply" id="{{item}}">回复</view>
+              <view class="comment-last-set-reply" bindtap="reply">回复</view>
               <view class="comment-last-set-delete">删除</view>
             </view>
             <view class="comment-last-time">评论时间：{{filter.dateFormatStr(item.meta.createAt)}}</view>
@@ -73,7 +73,7 @@
               </view>
               <view class="comment-last">
                 <view class="comment-last-set">
-                  <view class="comment-last-set-reply" bindtap="childrenReply" id="{{item}}">回复</view>
+                  <view class="comment-last-set-reply" bindtap="childrenReply">回复</view>
                   <view class="comment-last-set-delete">删除</view>
                 </view>
                 <view class="comment-last-time">评论时间：{{filter.dateFormatStr(item.meta.createAt)}}</view>
