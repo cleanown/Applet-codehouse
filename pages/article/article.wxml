@@ -1,13 +1,16 @@
 <!--pages/article/article.wxml-->
+<wxs src="../../utils/filter.wxs" module="filter"/>
 <view class="home">
+  <!-- 公司详情 -->
   <view class="cp">
     <view class="cpname">{{company.companyname}}</view>
     <view class="cpdetail">{{company.companydetail}}</view>
     <view class="cplast">
       <view class="cp-auth">作者：{{company.userinfo.username}}</view>
-      <view class="cp-auth">发布时间：{{releaseTime}}</view>
+      <view class="cp-auth">发布时间：{{filter.dateFormatStr(company.meta.createAt)}}</view>
     </view>
   </view>
+  <!-- 底部 -->
   <view class="icon">
     <mp-icon class="icons" icon="star" color="{{starcolor}}" type="{{startype}}" size="25" bindtap="star"></mp-icon>
     <mp-icon icon="like" color="{{likecolor}}" type="{{liketype}}" size="25" bindtap="like"></mp-icon>
@@ -15,34 +18,61 @@
     <mp-icon icon="comment" color="black" size="25" bindtap="comment"></mp-icon>
     <view class="icons">45</view>
   </view>
+  <!-- 评论输入框 -->
   <view class="input" wx:if="{{inputshow}}">
     <view class="input-down" bindtap="inputClose">
       <image class="input-down-img" src="../../images/arrow_down.png" mode="aspectFill"></image>
     </view>
-    <textarea class="input-detail" fixed="true" auto-focus="true" show-confirm-bar="{{false}}" placeholder="评论："></textarea>
+    <textarea class="input-detail" fixed="true" auto-focus="true" show-confirm-bar="{{false}}" placeholder="评论：" bindinput="{{commentValue}}" value="{{cValue}}"></textarea>
     <button class="input-btn" size="mini" hover-class="hover-class">发送</button>
   </view>
+  <!-- 评论内容 -->
   <view class="comment">
     <view class="comment-title">评论 :</view>
     <view wx:if="{{commentshow}}">
-      <view class="comment-item">
-        <view class="comment-items" wx:for="{{comment}}" wx:key="index">
+      <view class="comment-item" wx:for="{{comment}}" wx:key="index">
+        <view class="comment-items">
           <view class="comment-items-user">
             <view class="comment-item-user-head">
               <image class="comment-item-user-head-img" src="{{item.userinfo.headimg}}"></image>
             </view>
             <view class="comment-item-user-name">{{item.userinfo.username}}</view>
           </view>
-          <view class="comment-detail">
-          {{item.commentdetail}}
+          <view class="comment-detail" style="font-weight: bolder">
+            {{item.commentdetail}}
           </view>
-          <view class="comment-last">
+          <view class="comment-last" style="margin-bottom: 30px;">
             <view class="comment-last-set">
               <view class="comment-last-set-reply">回复</view>
               <view class="comment-last-set-delete">删除</view>
             </view>
-            <view class="comment-last-time">评论时间：{{item.meta.createAt}}</view>
+            <view class="comment-last-time">评论时间：{{filter.dateFormatStr(item.meta.createAt)}}</view>
           </view>
+          <!-- 子评论，回复 -->
+          <view style="border-top: 1px dotted #ccc;padding:20px">
+            <view class="comment-items" wx:for="{{item.children}}" wx:key="index">
+              <view class="comment-items-user">
+                <view class="comment-item-user-head">
+                  <image class="comment-item-user-head-img" src="{{item.userinfo.headimg}}"></image>
+                </view>
+                <view class="comment-item-user-name">{{item.userinfo.username}}</view>
+              </view>
+              <view class="comment-detail">
+                <view style="float: left;color: #B388FF;">@{{item.linkname}}</view>
+                <view>
+                  {{item.commentdetail}}
+                </view>
+              </view>
+              <view class="comment-last">
+                <view class="comment-last-set">
+                  <view class="comment-last-set-reply">回复</view>
+                  <view class="comment-last-set-delete">删除</view>
+                </view>
+                <view class="comment-last-time">评论时间：{{filter.dateFormatStr(item.meta.createAt)}}</view>
+              </view>
+            </view>
+          </view>
+
         </view>
       </view>
     </view>

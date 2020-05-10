@@ -10,7 +10,7 @@ Page({
     companyid: '',
     company: {},
     comment: {},
-    releaseTime: '',
+    cValue: '',
     starcolor: 'black',
     startype: 'outline',
     likecolor: 'black',
@@ -65,6 +65,12 @@ Page({
       inputshow: false
     })
   },
+  commentValue: function (e) {
+    this.setData({
+      cValue: e.detail.value
+    })
+    console.log(this.data.cValue)
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -79,8 +85,7 @@ Page({
       // console.log(res)
       if (res.code === 200) {
         this.setData({
-          company: res.data,
-          releaseTime: res.data.meta.createAt.slice(0,10) + ' ' + res.data.meta.createAt.slice(11,19)
+          company: res.data
         })
         console.log(this.data.releaseTime)
         console.log(this.data.company)
