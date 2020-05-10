@@ -16,10 +16,11 @@ Page({
   getCompanylsit: function () {
     request.get(companylist).then(res => {
       if (res.code === 200) {
-        console.log(res)
         this.setData({
           companylist: res.data
         })
+        console.log('%c公司列表：','color: yellow')
+        console.log(this.data.companylist)
       } else {
         wx.showToast({
           title: res.msg,
@@ -42,10 +43,11 @@ Page({
       key: this.data.searchvalue
     }).then((res) => {
       if (res.code === 200) {
-        console.log(res)
         this.setData({
           companylist: res.data
         })
+        console.log('%c搜索列表：','color: yellow')
+        console.log(this.data.companylist)
       } else {
         wx.showToast({
           title: res.msg,
@@ -56,6 +58,7 @@ Page({
     console.log(this.data.searchvalue)
   },
   itemClick: function (e) {
+    console.log('%c带参跳转（id）:','color: yellow')
     console.log(e.currentTarget.id)
     wx.navigateTo({
       url: '/pages/article/article?id='+e.currentTarget.id+'',

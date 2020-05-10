@@ -90,6 +90,13 @@
 					"id": -1,
 					"name": "pages/article/article",
 					"pathName": "pages/article/article",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/about/about",
+					"pathName": "pages/about/about",
 					"scene": null
 				}
 			]

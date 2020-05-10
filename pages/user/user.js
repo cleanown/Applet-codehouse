@@ -12,26 +12,31 @@ Page({
       {
         imgUrl: '../../images/user/article.png',
         fun: '发文管理',
+        id: 0,
         role: 2
       },
       {
         imgUrl: '../../images/user/user.png',
         fun: '用户管理',
+        id: 1,
         role: 2
       },
       {
         imgUrl: '../../images/user/collect.png',
         fun: '收藏',
+        id: 2,
         role: 1
       },
       {
         imgUrl: '../../images/user/setting.png',
         fun: '设置',
+        id: 3,
         role: 1
       },
       {
         imgUrl: '../../images/user/about.png',
         fun: '关于',
+        id: 4,
         role: 1
       }
     ]
@@ -41,6 +46,26 @@ Page({
     wx.redirectTo({
       url: '/pages/login/login',
     })
+  },
+  itemClick: function (e) {
+    console.log(e.currentTarget.dataset.id)
+    switch (e.currentTarget.dataset.id) {
+      case 0:
+        wx.navigateTo({
+          url: '/pages/articlemanage/articlemanage',
+        })
+        break;
+      case 1:
+        wx.navigateTo({
+          url: '/pages/usermanage/usermanage',
+        })
+        break;
+        case 4:
+        wx.navigateTo({
+          url: '/pages/about/about',
+        })
+        break;
+    }
   },
   /**
    * 生命周期函数--监听页面加载
@@ -62,11 +87,12 @@ Page({
   onShow: function () {
     request.get(userinfo).then((res) => {
       if (res.code === 200) {
+        console.log('%c我的信息：', 'color: yellow')
         console.log(res)
         this.setData({
           userinfo: res.data
         })
-        getApp().globalData.userInfo = res.data
+        getApp().globalData.userinfo = res.data
       } else {
         wx.showToast({
           title: res.msg,

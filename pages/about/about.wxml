@@ -1,0 +1,8 @@
+<!--pages/about/about.wxml-->
+<view class="home">
+  <view class="detail">
+    <view class="box title">该项目由陈乐恩个人开发</view>
+    <view class="box">愿每个准程序员都能找到合适的工作</view>
+    <view class="box">愿世界更美好</view>
+  </view>
+</view>

@@ -7,6 +7,7 @@ const release = '/company/add'
 const companydetail = '/company/companyDetail'
 const commentget = '/comment/get/'
 const commentadd = '/comment/add'
+const getalluser = '/user/getalluser'
 
 module.exports = {
   login,
@@ -17,5 +18,6 @@ module.exports = {
   release,
   companydetail,
   commentget,
-  commentadd
+  commentadd,
+  getalluser
 }

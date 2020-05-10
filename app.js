@@ -5,7 +5,7 @@ App({
   onLaunch: function () {
   },
   globalData: {
-    userInfo: null,
+    userinfo: null,
     loginCode: null,
     host: 'http://api.cleanown.cn'
   }

@@ -1,6 +1,6 @@
 // pages/article/article.js
 import request from '../../api/request'
-import { companydetail, commentget, commentadd } from '../../api/api'
+import { companydetail, commentget, commentadd, userinfo } from '../../api/api'
 Page({
 
   /**
@@ -16,10 +16,15 @@ Page({
     likecolor: 'black',
     liketype: 'outline',
     likenum: 55,
+    commentnum: '',
     commentshow: false,
     inputshow: false,
     replyshow: false,
-    commentvalue: ''
+    commentvalue: '',
+    userinfo: {},
+    userid: '',
+    linkid: '',
+    linkname: ''
   },
   star: function () {
     if (this.data.starcolor === 'black') {
@@ -78,42 +83,80 @@ Page({
     const data = {
       commentdetail: this.data.commentvalue,
       companyid: this.data.companyid,
+      userid: this.data.userid,
+      commentid: this.data.commentid,
+      linkid: this.data.linkid,
+      linkname: this.data.linkname
     }
-    request.post(commentadd, data).then((res) => {
-      if (res.code === 200) {
-        console.log(res)
-        this.onShow()
-        this.setData({
-          commentvalue: ''
-        })
-      } else {
-        wx.showToast({
-          title: res.msg,
-          icon: 'none'
-        })
-      }
-    })
+    if (this.data.commentvalue === '') {
+      wx.showToast({
+        title: '内容不得为空',
+        icon: 'none'
+      })
+    } else {
+      request.post(commentadd, data).then((res) => {
+        if (res.code === 200) {
+          wx.showToast({
+            title: '成功',
+          })
+          console.log('%c是否添加成功：','color: yellow')
+          console.log(res)
+          this.onShow()
+          this.setData({
+            commentvalue: '',
+            inputshow: false,
+            replyshow: false,
+            commentid: '',
+            linkid: '',
+            linkname: ''
+          })
+        } else {
+          wx.showToast({
+            title: res.msg,
+            icon: 'none'
+          })
+        }
+      })
+    }
   },
   reply: function(e) {
     this.setData({
-      replyshow: true
+      replyshow: true,
+      commentid: e.currentTarget.dataset.commentid,
+      linkid: e.currentTarget.dataset.linkid,
+      linkname: e.currentTarget.dataset.linkname,
     })
+    console.log('%c回复带参：','color: yellow')
     console.log(e)
+    console.log(`公司id：${this.data.companyid}`)
+    console.log(`评论主体id：${this.data.commentid}`)
+    console.log(`@人的linkid：${this.data.linkid}`)
+    console.log(`@人的linkname：${this.data.linkname}`)
+    console.log(`我的id：${this.data.userid}`)
   },
   childrenReply: function(e) {
     this.setData({
-      replyshow: true
+      replyshow: true,
+      commentid: e.currentTarget.dataset.commentid,
+      linkid: e.currentTarget.dataset.linkid,
+      linkname: e.currentTarget.dataset.linkname,
     })
+    console.log('%c回复带参：','color: yellow')
     console.log(e)
+    console.log(`公司id：${this.data.companyid}`)
+    console.log(`评论主体id：${this.data.commentid}`)
+    console.log(`@人的linkid：${this.data.linkid}`)
+    console.log(`@人的linkname：${this.data.linkname}`)
+    console.log(`我的id：${this.data.userid}`)
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     this.setData({
-      companyid: options.id
+      companyid: options.id,
     })
-    console.log(this.data.companyid)
+    // console.log(this.data.companyid)
     request.get(companydetail, {
       companyid: options.id
     }).then((res) => {
@@ -123,7 +166,24 @@ Page({
           company: res.data,
           releaseTime: res.data.meta.createAt.slice(0,10) + ' ' + res.data.meta.createAt.slice(11,19)
         })
+        console.log('%c公司信息详情:','color: yellow')
         console.log(this.data.company)
+      } else {
+        wx.showToast({
+          title: res.msg,
+          icon: 'none'
+        })
+      }
+    })
+    // 我的个人信息请求
+    request.get(userinfo).then((res) => {
+      if (res.code === 200) {
+        this.setData({
+          userinfo: res.data,
+          userid: res.data._id
+        })
+        console.log('%c我的个人信息:','color: yellow')
+        console.log(this.data.userinfo)
       } else {
         wx.showToast({
           title: res.msg,
@@ -145,15 +205,17 @@ Page({
    */
   onShow: function () {
     request.get(`${commentget}${this.data.companyid}`).then((res) => {
-      console.log(res)
+      // console.log(res)
       if (res.code === 200) {
         if (res.msg === '查询成功') {
           this.setData ({
-            commentshow: true
+            commentshow: true,
+            commentnum: res.data.length
           })
           this.setData({
             comment: res.data
           })
+          console.log('%c评论列表:','color: yellow')
           console.log(this.data.comment)
         } else {
           this.setData ({

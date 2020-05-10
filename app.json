@@ -5,7 +5,10 @@
     "pages/user/user",
     "pages/login/login",
     "pages/register/register",
-    "pages/article/article"
+    "pages/article/article",
+    "pages/articlemanage/articlemanage",
+    "pages/usermanage/usermanage",
+    "pages/about/about"
   ],
   "window":{
     "backgroundTextStyle":"light",
