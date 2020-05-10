@@ -31,7 +31,7 @@
     <view class="input-down" bindtap="inputClose">
       <image class="input-down-img" src="../../images/arrow_down.png" mode="aspectFill"></image>
     </view>
-    <textarea class="input-detail" fixed="true" auto-focus="true" show-confirm-bar="{{false}}" placeholder="评论：" bindinput="commentValue" value="{{commentvalue}}"></textarea>
+    <textarea class="input-detail" fixed="true" auto-focus="true" show-confirm-bar="{{false}}" placeholder="回复：" bindinput="commentValue" value="{{commentvalue}}"></textarea>
     <button class="input-btn" size="mini" hover-class="hover-class" bindtap="commentSent">发送</button>
   </view>
   <!-- 评论内容 -->
@@ -51,7 +51,7 @@
           </view>
           <view class="comment-last" style="margin-bottom: 30px;">
             <view class="comment-last-set">
-              <view class="comment-last-set-reply" bindtap="reply">回复</view>
+              <view class="comment-last-set-reply" bindtap="reply" data-commentid="{{item._id}}" data-linkid="{{item.linkid}}" data-linkname="{{item.userinfo.username}}">回复</view>
               <view class="comment-last-set-delete">删除</view>
             </view>
             <view class="comment-last-time">评论时间：{{filter.dateFormatStr(item.meta.createAt)}}</view>

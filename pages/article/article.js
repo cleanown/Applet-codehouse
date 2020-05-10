@@ -95,9 +95,15 @@ Page({
     })
   },
   reply: function(e) {
+    this.setData({
+      replyshow: true
+    })
     console.log(e)
   },
   childrenReply: function(e) {
+    this.setData({
+      replyshow: true
+    })
     console.log(e)
   },
   /**
