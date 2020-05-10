@@ -18,6 +18,7 @@ Page({
     likenum: 55,
     commentshow: false,
     inputshow: false,
+    replyshow: false,
     commentvalue: ''
   },
   star: function () {
@@ -63,7 +64,8 @@ Page({
   },
   inputClose: function () {
     this.setData({
-      inputshow: false
+      inputshow: false,
+      replyshow: false
     })
   },
   commentValue: function (e) {
@@ -91,6 +93,12 @@ Page({
         })
       }
     })
+  },
+  reply: function(e) {
+    console.log(e)
+  },
+  childrenReply: function(e) {
+    console.log(e)
   },
   /**
    * 生命周期函数--监听页面加载
