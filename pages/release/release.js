@@ -126,6 +126,11 @@ Page({
             })
           }, 1500)
         }
+      }).catch((res) => {
+        wx.showToast({
+          title: res.msg,
+          icon: 'none'
+        })
       })
     }
   },

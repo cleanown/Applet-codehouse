@@ -78,7 +78,6 @@ Page({
           })
         }, 1500)
       }).catch((res) => {
-        console.log(res)
         wx.showToast({
           title: res.msg,
           icon: 'none'

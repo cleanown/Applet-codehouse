@@ -1,7 +1,6 @@
 // pages/userdetail/userdetail.js
 import request from '../../api/request'
-import { changerole } from '../../api/api'
-const app = getApp()
+import { changerole, deleteuser } from '../../api/api'
 Page({
 
   /**
@@ -18,8 +17,11 @@ Page({
     btnname: '修改',
     dialogShow: false,
     dialogmsg: '确定将该用户降为普通用户？',
-    buttons: [{text: '取消'}, {text: '确定'}]
+    buttons: [{text: '取消'}, {text: '确定'}],
+    dialogShowDelete: false,
+    buttonsDelete: [{text: '取消'}, {text: '确定'}],
   },
+  // 修改信息
   radiochange: function (e) {
     console.log(e.detail.value)
     this.setData({
@@ -53,7 +55,6 @@ Page({
     }
   },
   tapDialogButton: function (e) {
-    console.log(e.detail.index)
     if (e.detail.index === 0) {
       this.setData({
         dialogShow: false
@@ -83,6 +84,54 @@ Page({
           icon: 'none'
         })
       }
+    }).catch((res) => {
+      wx.showToast({
+        title: res.msg,
+        icon: 'none'
+      })
+    })
+  },
+  // 删除用户
+  deleteUser: function () {
+    this.setData({
+      dialogShowDelete: true
+    })
+  },
+  tapDialogButtonDelete: function (e) {
+    if (e.detail.index === 0) {
+      this.setData({
+        dialogShowDelete: false
+      })
+    } else {
+      this.deleteUserClick()
+    }
+  },
+  deleteUserClick: function () {
+    console.log(this.data.userid)
+    const url = `${deleteuser}?userid=${this.data.userid}`
+    request.remove(url).then((res) => {
+      if (res.code === 200) {
+        console.log(res)
+        wx.showToast({
+          title: res.msg,
+        })
+        setTimeout(() => {
+          wx.navigateBack({
+            complete: (res) => {},
+          })
+        },1500)
+      } else {
+        wx.showToast({
+          title: res.msg,
+          icon: 'none'
+        })
+      }
+    }).catch((res) => {
+      console.log(res)
+      wx.showToast({
+        title: res.msg,
+        icon: 'none'
+      })
     })
   },
   /**

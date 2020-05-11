@@ -1,1 +1,47 @@
 /* pages/articlemanage/articlemanage.wxss */
+.wxsearch {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 56px;
+  background-color: #eee;
+  top: 0;
+  z-index: 3;
+  box-sizing: border-box;
+  padding: 10px;
+}
+.wxsearch-detail{
+  display: flex;
+  flex: 1;
+  height: 36px;
+  background-color: #fff;
+  padding-left: 5px;
+  align-items: center;
+}
+.wxsearch-cancel{
+  margin-left: 10px;
+  margin-right: 5px;
+}
+.wxlist {
+  margin-top: 56px;
+}
+
+.wxlist-item {
+  display: flex;
+  justify-content: space-around;
+}
+
+.sort {
+  width: 30px;
+  height: 30px;
+}
+.sort-img{
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+}
+.companyname {
+  flex: 1;
+  margin-left: 15px;
+}

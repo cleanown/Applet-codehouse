@@ -1,4 +1,7 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "mp-cells": "../../miniprogram_npm/weui-miniprogram/cells/cells",
+    "mp-cell": "../../miniprogram_npm/weui-miniprogram/cell/cell"
+  },
   "navigationBarTitleText": "文章管理"
 }

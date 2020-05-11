@@ -77,6 +77,11 @@ Page({
           icon: 'none'
         })
       }
+    }).catch((res) => {
+      wx.showToast({
+        title: res.msg,
+        icon: 'none'
+      })
     })
   },
   /**

@@ -104,6 +104,13 @@
 					"id": -1,
 					"name": "pages/usermanage/usermanage",
 					"pathName": "pages/usermanage/usermanage",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/articlemanage/articlemanage",
+					"pathName": "pages/articlemanage/articlemanage",
 					"scene": null
 				}
 			]

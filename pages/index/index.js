@@ -35,6 +35,11 @@ Page({
           icon: 'none'
         })
       }
+    }).catch((res) => {
+      wx.showToast({
+        title: res.msg,
+        icon: 'none'
+      })
     })
   },
   userinfoGet: function () {
@@ -49,6 +54,11 @@ Page({
           icon: 'none'
         })
       }
+    }).catch((res) => {
+      wx.showToast({
+        title: res.msg,
+        icon: 'none'
+      })
     })
   },
   searchclear: function () {
@@ -82,6 +92,11 @@ Page({
           icon: 'none'
         })
       }
+    }).catch((res) => {
+      wx.showToast({
+        title: res.msg,
+        icon: 'none'
+      })
     })
     console.log(this.data.searchvalue)
   },

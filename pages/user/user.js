@@ -47,7 +47,6 @@ Page({
     })
   },
   itemClick: function (e) {
-    console.log(e.currentTarget.dataset.id)
     switch (e.currentTarget.dataset.id) {
       case 0:
         wx.navigateTo({

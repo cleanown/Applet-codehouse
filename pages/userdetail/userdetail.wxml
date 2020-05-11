@@ -4,7 +4,7 @@
     <view class="head">
       <cover-image class="head-img" wx:if="{{headimg}}" src="{{headimg}}" />
     </view>
-    <mp-icon class="delete" type="field" icon="delete" color="red" size="{{25}}"></mp-icon>
+    <mp-icon class="delete" type="field" icon="delete" color="red" size="{{25}}" bindtap="deleteUser"></mp-icon>
   </view>
   <view class="userdetail">
     <view class="item">用户名：</view>
@@ -16,7 +16,7 @@
       )
     </view>
     <radio-group class="radio" bindchange="radiochange">
-      <radio value="1" checked="{{checked}}" disabled="{{disabled}}">普通用户</radio>
+      <radio style="margin-bottom:10px" value="1" checked="{{checked}}" disabled="{{disabled}}">普通用户</radio>
       <radio value="2" checked="{{!checked}}" disabled="{{disabled}}">管理员</radio>
     </radio-group>
     <button class="btn" style="width: 100%;color: #fff" hover-class="hover-class"  bindtap="infoChange">{{btnname}}</button>
@@ -25,4 +25,10 @@
 <!-- 弹窗 -->
 <mp-dialog style="color: red" title="注意！！！" show="{{dialogShow}}" bindbuttontap="tapDialogButton" buttons="{{buttons}}">
   <view>{{dialogmsg}}</view>
+</mp-dialog>
+<!-- 删除弹窗 -->
+<mp-dialog style="color: red;text-align: center" title="注意！！！" show="{{dialogShowDelete}}" bindbuttontap="tapDialogButtonDelete" buttons="{{buttonsDelete}}">
+  <view style="display: flex;justify-content: center;">
+    确定删除 '<view style="color: blue;">{{username}}</view>' ？
+  </view>
 </mp-dialog>

@@ -117,6 +117,11 @@ Page({
             icon: 'none'
           })
         }
+      }).catch((res) => {
+        wx.showToast({
+          title: res.msg,
+          icon: 'none'
+        })
       })
     }
   },
@@ -177,6 +182,11 @@ Page({
           icon: 'none'
         })
       }
+    }).catch((res) => {
+      wx.showToast({
+        title: res.msg,
+        icon: 'none'
+      })
     })
   },
 
@@ -214,6 +224,11 @@ Page({
           title: res.msg,
         })
       }
+    }).catch((res) => {
+      wx.showToast({
+        title: res.msg,
+        icon: 'none'
+      })
     })
   },
 
