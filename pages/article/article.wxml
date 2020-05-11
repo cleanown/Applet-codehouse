@@ -5,6 +5,11 @@
   <view class="cp">
     <view class="cpname">{{company.companyname}}</view>
     <view class="cpdetail">{{company.companydetail}}</view>
+    <view class="adress">
+      <text style="font-weight: bolder">公司地址：</text>
+      <text style="color:#666">{{company.province}}/</text>
+      <text style="color:#666">{{company.city}}</text>
+    </view>
     <view class="cplast">
       <view class="cp-auth">作者：{{company.userinfo.username}}</view>
       <view class="cp-auth">发布时间：{{releaseTime}}</view>
