@@ -1,0 +1,33 @@
+/* pages/userdetail/userdetail.wxss */
+.home{
+  box-sizing: border-box;
+  width: 100%;
+}
+.title{
+  display: flex;
+  box-sizing: border-box;
+  width: 100%;
+  justify-content: center;
+  background-image: url('https://cdn.vuetifyjs.com/images/parallax/material.jpg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  box-shadow: 0px 0px 20px inset rgba(0, 0, 0, 0.3);
+}
+.head{
+  margin: 15px;
+  box-sizing: border-box;
+  width: 30%;
+}
+.head-img{
+  width: 100%;
+  box-shadow: 3px 3px 3px #000;
+  border-radius: 100%;
+}
+.userdetail{
+  box-sizing: border-box;
+  padding: 20px;
+}
+.radio{
+  display: flex;
+  flex-direction: column;
+}

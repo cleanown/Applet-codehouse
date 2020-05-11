@@ -8,6 +8,7 @@
     "pages/article/article",
     "pages/articlemanage/articlemanage",
     "pages/usermanage/usermanage",
+    "pages/userdetail/userdetail",
     "pages/about/about"
   ],
   "window":{

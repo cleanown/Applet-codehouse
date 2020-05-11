@@ -1,0 +1,23 @@
+<!--pages/userdetail/userdetail.wxml-->
+<view class="home">
+  <view class="title">
+    <view class="head">
+      <cover-image class="head-img" wx:if="{{headimg}}" src="{{headimg}}" />
+    </view>
+  </view>
+  <view class="userdetail">
+    <view>用户名：</view>
+    <input value="{{username}}" />
+    <view>
+      用户级别：(
+        <text style="color:red" decode="{{true}}">&nbsp; 普通用户 &nbsp;</text>
+        <text style="color:red" decode="{{true}}">&nbsp; 管理员 &nbsp;</text>
+      )
+    </view>
+    <radio-group class="radio" bindchange="radiochange">
+      <radio value="1">普通用户</radio>
+      <radio value="2">管理员</radio>
+    </radio-group>
+    <button style="width: 100%;background-color: #1976d2">修改</button>
+  </view>
+</view>

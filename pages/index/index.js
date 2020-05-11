@@ -9,8 +9,12 @@ Page({
     companylist: {}
   },
   onLoad() {
+    
   },
   onShow: function () {
+    wx.showLoading({
+      title: '',
+    })
     this.getCompanylsit()
   },
   getCompanylsit: function () {
@@ -18,6 +22,9 @@ Page({
       if (res.code === 200) {
         this.setData({
           companylist: res.data
+        })
+        wx.hideLoading({
+          complete: (res) => {},
         })
         console.log('%c公司列表：','color: yellow')
         console.log(this.data.companylist)
@@ -33,11 +40,14 @@ Page({
     this.setData({
       searchvalue: ''
     })
-    this.getCompanylsit()
+    this.onShow()
   },
   search: function (e) {
     this.setData({
       searchvalue: e.detail.value
+    })
+    wx.showLoading({
+      title: '',
     })
     request.get(searchlist, {
       key: this.data.searchvalue
@@ -45,6 +55,9 @@ Page({
       if (res.code === 200) {
         this.setData({
           companylist: res.data
+        })
+        wx.hideLoading({
+          complete: (res) => {},
         })
         console.log('%c搜索列表：','color: yellow')
         console.log(this.data.companylist)
@@ -58,7 +71,7 @@ Page({
     console.log(this.data.searchvalue)
   },
   itemClick: function (e) {
-    console.log('%c带参跳转（id）:','color: yellow')
+    console.log('%c带参跳转（article—id）:','color: yellow')
     console.log(e.currentTarget.dataset.id)
     wx.navigateTo({
       url: '/pages/article/article?id='+e.currentTarget.dataset.id+'',
