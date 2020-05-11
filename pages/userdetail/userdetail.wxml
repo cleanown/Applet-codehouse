@@ -7,7 +7,7 @@
   </view>
   <view class="userdetail">
     <view>用户名：</view>
-    <input value="{{username}}" />
+    <input value="{{username}}" disabled="true"/>
     <view>
       用户级别：(
         <text style="color:red" decode="{{true}}">&nbsp; 普通用户 &nbsp;</text>
