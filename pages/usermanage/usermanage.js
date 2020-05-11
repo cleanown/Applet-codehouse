@@ -1,6 +1,6 @@
 // pages/usermanage/usermanage.js
 import request from '../../api/request'
-import { getalluser } from '../../api/api'
+import { getalluser, userinfo } from '../../api/api'
 Page({
 
   /**
@@ -8,6 +8,7 @@ Page({
    */
   data: {
     users: {},
+    myuserinfo: {},
     searchvalue: ''
   },
   search: function (e) {
@@ -53,6 +54,7 @@ Page({
       title: '',
     })
     this.getalluser()
+    this.userinfoGet()
   },
   getalluser: function () {
     request.get(getalluser, {
@@ -67,6 +69,22 @@ Page({
         })
         console.log('%c用户列表：', 'color: yellow')
         console.log(this.data.users)
+      } else {
+        wx.showToast({
+          title: res.msg,
+          icon: 'none'
+        })
+      }
+    })
+  },
+  userinfoGet: function () {
+    request.get(userinfo).then((res) => {
+      if (res.code === 200) {
+        console.log('%c我的信息：', 'color: yellow')
+        console.log(res)
+        this.setData({
+          myuserinfo: res.data
+        })
       } else {
         wx.showToast({
           title: res.msg,

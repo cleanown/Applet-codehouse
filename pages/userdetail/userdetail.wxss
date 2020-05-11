@@ -27,7 +27,23 @@
   box-sizing: border-box;
   padding: 20px;
 }
+.item{
+  font-weight: bolder;
+  font-size: large;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.username{
+  border-bottom: 1px dashed #999;
+}
 .radio{
   display: flex;
   flex-direction: column;
+  margin-bottom: 30px;
+}
+.btn{
+  background-color: blue;
+}
+.hover-class{
+  background-color: #1976d2;
 }

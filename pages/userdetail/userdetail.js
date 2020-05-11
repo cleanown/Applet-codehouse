@@ -10,10 +10,23 @@ Page({
     userid: '',
     username: '',
     headimg: '',
-    role: ''
+    role: '',
+    changerole: '',
+    disabled: true,
+    btnname: '修改'
   },
   radiochange: function (e) {
     console.log(e.detail.value)
+  },
+  infoChange: function () {
+    if (this.data.btnname === '修改') {
+      this.setData({
+        btnname: '确认修改',
+        disabled: false
+      })
+    } else {
+      console.log('修改成功')
+    }
   },
   /**
    * 生命周期函数--监听页面加载

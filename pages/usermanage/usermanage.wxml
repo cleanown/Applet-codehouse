@@ -9,7 +9,7 @@
 	</view>
 	<view class="wxlist">
 		<mp-cells ext-class="my-cells">
-			<mp-cell ext-class="my-cell" link wx:for="{{users}}" wx:key="index" bindtap="itemClick" data-userid="{{item._id}}" data-username="{{item.username}}" data-headimg="{{item.headimg}}" data-role="{{item.role}}">
+			<mp-cell ext-class="my-cell" link wx:for="{{users}}" wx:key="index" wx:if="{{item._id!==myuserinfo._id}}" bindtap="itemClick" data-userid="{{item._id}}" data-username="{{item.username}}" data-headimg="{{item.headimg}}" data-role="{{item.role}}">
 				<view class="wxlist-item">
 					<view class="sort">
 						<image class="sort-img" src="{{item.headimg}}"></image>

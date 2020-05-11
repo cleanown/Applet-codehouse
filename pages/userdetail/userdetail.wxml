@@ -6,18 +6,18 @@
     </view>
   </view>
   <view class="userdetail">
-    <view>用户名：</view>
-    <input value="{{username}}" disabled="true"/>
-    <view>
+    <view class="item">用户名：</view>
+    <input class="username" value="{{username}}" disabled="true"/>
+    <view class="item">
       用户级别：(
-        <text style="color:red" decode="{{true}}">&nbsp; 普通用户 &nbsp;</text>
-        <text style="color:red" decode="{{true}}">&nbsp; 管理员 &nbsp;</text>
+        <text style="color:red" decode="{{true}}" wx:if="{{role<=1}}">&nbsp; 普通用户 &nbsp;</text>
+        <text style="color:red" decode="{{true}}" wx:else>&nbsp; 管理员 &nbsp;</text>
       )
     </view>
     <radio-group class="radio" bindchange="radiochange">
-      <radio value="1">普通用户</radio>
-      <radio value="2">管理员</radio>
+      <radio value="1" disabled="{{disabled}}">普通用户</radio>
+      <radio value="2" disabled="{{disabled}}">管理员</radio>
     </radio-group>
-    <button style="width: 100%;background-color: #1976d2">修改</button>
+    <button class="btn" style="width: 100%;color: #fff" hover-class="hover-class"  bindtap="infoChange">{{btnname}}</button>
   </view>
 </view>
