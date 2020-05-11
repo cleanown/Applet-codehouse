@@ -1,6 +1,5 @@
 // pages/user/user.js
-import request from '../../api/request'
-import { userinfo } from '../../api/api'
+const app = getApp()
 Page({
 
   /**
@@ -85,21 +84,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    request.get(userinfo).then((res) => {
-      if (res.code === 200) {
-        console.log('%c我的信息：', 'color: yellow')
-        console.log(res)
-        this.setData({
-          userinfo: res.data
-        })
-        getApp().globalData.userinfo = res.data
-      } else {
-        wx.showToast({
-          title: res.msg,
-          icon: 'none'
-        })
-      }
+    this.setData({
+      userinfo: app.globalData.userinfo
     })
+    console.log('%c我的信息：', 'color: yellow')
+    console.log(this.data.userinfo)
   },
 
   /**

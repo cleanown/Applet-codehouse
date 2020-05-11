@@ -4,6 +4,7 @@
   width: 100%;
 }
 .title{
+  position: relative;
   display: flex;
   box-sizing: border-box;
   width: 100%;
@@ -22,6 +23,12 @@
   width: 100%;
   box-shadow: 3px 3px 3px #000;
   border-radius: 100%;
+}
+.delete{
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 15px;
 }
 .userdetail{
   box-sizing: border-box;

@@ -1,6 +1,7 @@
 // pages/article/article.js
+const app = getApp()
 import request from '../../api/request'
-import { companydetail, commentget, commentadd, userinfo } from '../../api/api'
+import { companydetail, commentget, commentadd } from '../../api/api'
 Page({
 
   /**
@@ -155,6 +156,8 @@ Page({
   onLoad: function (options) {
     this.setData({
       companyid: options.id,
+      userinfo: app.globalData.userinfo,
+      userid: app.globalData.userinfo._id
     })
     // console.log(this.data.companyid)
     request.get(companydetail, {
@@ -168,22 +171,6 @@ Page({
         })
         console.log('%c公司信息详情:','color: yellow')
         console.log(this.data.company)
-      } else {
-        wx.showToast({
-          title: res.msg,
-          icon: 'none'
-        })
-      }
-    })
-    // 我的个人信息请求
-    request.get(userinfo).then((res) => {
-      if (res.code === 200) {
-        this.setData({
-          userinfo: res.data,
-          userid: res.data._id
-        })
-        console.log('%c我的个人信息:','color: yellow')
-        console.log(this.data.userinfo)
       } else {
         wx.showToast({
           title: res.msg,

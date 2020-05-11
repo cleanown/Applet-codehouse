@@ -2,7 +2,7 @@
 //获取应用实例
 const app = getApp()
 import request from '../../api/request'
-import { companylist, searchlist } from '../../api/api'
+import { companylist, searchlist, userinfo } from '../../api/api'
 Page({
   data: {
     searchvalue: '',
@@ -16,6 +16,7 @@ Page({
       title: '',
     })
     this.getCompanylsit()
+    this.userinfoGet()
   },
   getCompanylsit: function () {
     request.get(companylist).then(res => {
@@ -28,6 +29,20 @@ Page({
         })
         console.log('%c公司列表：','color: yellow')
         console.log(this.data.companylist)
+      } else {
+        wx.showToast({
+          title: res.msg,
+          icon: 'none'
+        })
+      }
+    })
+  },
+  userinfoGet: function () {
+    request.get(userinfo).then((res) => {
+      if (res.code === 200) {
+        console.log('%c先获取自己的信息并存入globalData：', 'color: yellow')
+        getApp().globalData.userinfo = res.data
+        console.log(getApp().globalData.userinfo)
       } else {
         wx.showToast({
           title: res.msg,
