@@ -1,6 +1,7 @@
 // pages/userdetail/userdetail.js
 // import request from '../../api/request'
 // import { getalluser } from '../../api/api'
+const app = getApp()
 Page({
 
   /**
