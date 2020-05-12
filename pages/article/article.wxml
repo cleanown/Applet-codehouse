@@ -3,6 +3,8 @@
 <view class="home">
   <!-- 公司详情 -->
   <view class="cp">
+    <image wx:if="{{userinfo.role>1 && isverify}}" class="cp-bg" mode="aspectFit" src="../../images/adopt.049203d3.png" />
+    <image wx:if="{{userinfo.role>1 && !isverify}}" class="cp-bg" mode="aspectFit" src="../../images/pass.62c6b7e8.png" />
     <view class="cpname">{{company.companyname}}</view>
     <view class="cpdetail">{{company.companydetail}}</view>
     <view class="adress">
@@ -90,5 +92,11 @@
       </view>
     </view>
     <view wx:if="{{!commentshow}}" class="comment-none">暂无评论！</view>
+  </view>
+  <!-- 删除审核按钮 -->
+  <view class="userchange" wx:if="{{userinfo.role>1}}">
+    <mp-icon class="userchange-icon" icon="delete" size="30" color="red"/>
+    <mp-icon class="userchange-icon" wx:if="{{isverify}}" icon="report-problem" size="30"  color="orange"/>
+    <mp-icon class="userchange-icon" wx:else icon="done2" size="30" color="green"/>
   </view>
 </view>

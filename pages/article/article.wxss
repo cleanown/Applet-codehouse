@@ -7,6 +7,13 @@
 .cp{
   box-sizing: border-box;
   margin: 15px;
+  position: relative;
+}
+.cp-bg{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0.6;
 }
 .cpname{
   font-size: 25px;
@@ -100,8 +107,6 @@
   border-bottom: 1px solid #999;
   padding: 10px 20px;
 }
-.comment-items{
-}
 .comment-items-user{
   display: flex;
   align-items: center;
@@ -148,4 +153,17 @@
   margin: 10px;
   text-align: center;
   color: #999;
+}
+.userchange{
+  position: fixed;
+  width: 100%;
+  right: 25px;
+  height: 56px;
+  bottom: 46px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.userchange-icon{
+  margin-left: 10px;
 }

@@ -1,7 +1,7 @@
 // pages/article/article.js
 const app = getApp()
 import request from '../../api/request'
-import { companydetail, commentget, commentadd } from '../../api/api'
+import { companydetail, commentget, commentadd, admindelete, verify } from '../../api/api'
 Page({
 
   /**
@@ -23,6 +23,7 @@ Page({
     replyshow: false,
     commentvalue: '',
     userinfo: {},
+    isverify: '',
     userid: '',
     linkid: '',
     linkname: ''
@@ -172,6 +173,7 @@ Page({
       if (res.code === 200) {
         this.setData({
           company: res.data,
+          isverify: res.data.isverify,
           releaseTime: res.data.meta.createAt.slice(0,10) + ' ' + res.data.meta.createAt.slice(11,19)
         })
         console.log('%c公司信息详情:','color: yellow')

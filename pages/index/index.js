@@ -18,6 +18,7 @@ Page({
     this.getCompanylsit()
     this.userinfoGet()
   },
+  // 获取列表
   getCompanylsit: function () {
     request.get(companylist).then(res => {
       if (res.code === 200) {
@@ -42,6 +43,7 @@ Page({
       })
     })
   },
+  // 获取用户信息
   userinfoGet: function () {
     request.get(userinfo).then((res) => {
       if (res.code === 200) {
@@ -67,6 +69,7 @@ Page({
     })
     this.onShow()
   },
+  // 搜索
   search: function (e) {
     this.setData({
       searchvalue: e.detail.value

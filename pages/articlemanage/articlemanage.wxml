@@ -1,5 +1,6 @@
 <!--pages/articlemanage/articlemanage.wxml-->
 <view class="home">
+	<!-- 搜索 -->
 	<view class="wxsearch">
 		<view class="wxsearch-detail">
 			<icon type="search"></icon>
@@ -7,6 +8,9 @@
 		</view>
 		<view class="wxsearch-cancel" wx:if="{{searchvalue.length>0}}" bindtap="searchclear">取消</view>
 	</view>
+	<!-- 筛选 -->
+	<view></view>
+	<!-- 列表 -->
 	<view class="wxlist" bindtouchstart="wxlisttouchstart" bindtouchmove="wxlisttouchmove" bindtouchend="wxlisttouchend">
 		<mp-cells ext-class="my-cells">
 			<mp-cell ext-class="my-cell" link wx:for="{{companylist}}" wx:key="index" bindtap="itemClick" data-id="{{item._id}}">

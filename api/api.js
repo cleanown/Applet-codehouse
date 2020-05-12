@@ -5,6 +5,8 @@ const userinfo = '/user/userinfo' // 用户信息
 const searchlist = '/search/companylist' // 公司搜索
 const release = '/company/add' // 发布
 const companydetail = '/company/companyDetail' // 公司详情
+const admindelete = '/company/admindelete' // 删除文章
+const verify = '/company/verify' // 审核文章
 const commentget = '/comment/get/' // 评论
 const commentadd = '/comment/add' // 添加评论
 const getalluser = '/user/getalluser' // 用户管理
@@ -20,6 +22,8 @@ module.exports = {
   searchlist,
   release,
   companydetail,
+  admindelete,
+  verify,
   commentget,
   commentadd,
   getalluser,
