@@ -36,7 +36,7 @@
     <view class="input-down" bindtap="inputClose">
       <image class="input-down-img" src="../../images/arrow_down.png" mode="aspectFill"></image>
     </view>
-    <textarea class="input-detail" fixed="true" focus=" " show-confirm-bar="{{false}}" placeholder="回复：" bindinput="commentValue" value="{{commentvalue}}"></textarea>
+    <textarea class="input-detail" fixed="true" focus="true" show-confirm-bar="{{false}}" placeholder="@{{linkname}}:" bindinput="commentValue" value="{{commentvalue}}"></textarea>
     <button class="input-btn" size="mini" hover-class="hover-class" bindtap="commentSent">发送</button>
   </view>
   <!-- 评论内容 -->

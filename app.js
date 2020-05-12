@@ -5,6 +5,6 @@ App({
   globalData: {
     userinfo: null,
     loginCode: null,
-    host: 'http://api.cleanown.cn'
+    host: 'https://api.cleanown.cn'
   }
 })

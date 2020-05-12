@@ -10,7 +10,9 @@ Page({
     companylist: [],
     searchvalue: '',
     page: 1,
-    pageTotle: ''
+    pageTotle: '',
+    clientY: '',
+    timeStamp: ''
   },
   search: function (e) {
     this.setData({
@@ -37,6 +39,47 @@ Page({
     wx.navigateTo({
       url: '/pages/article/article?id='+e.currentTarget.dataset.id+'',
     })
+  },
+  wxlisttouchstart: function (e) {
+    // console.log(`%c开始:`,'color: yellow')
+    // console.log(e.timeStamp)
+    // console.log(e.changedTouches[0].clientY)
+    this.setData({
+      clientY: e.changedTouches[0].clientY,
+      timeStamp: e.timeStamp
+    })
+  },
+  wxlisttouchmove: function (e) {
+    // console.log(e.timeStamp)
+  },
+  wxlisttouchend: function (e) {
+    // console.log(`%c结束:`,'color: yellow')
+    // console.log(e.timeStamp)
+    // console.log(e.changedTouches[0].clientY)
+    const clientYDiffer = this.data.clientY-e.changedTouches[0].clientY
+    const timeStampDiffer = e.timeStamp-this.data.timeStamp
+    console.log('%cclientY差值（滑动y轴坐标差）:', 'color:yellow')
+    console.log(clientYdiffer)
+    console.log('%timeStamp差值（滑动时差）:', 'color:yellow')
+    console.log(timeStampDiffer)
+    if (clientYDiffer>160) {
+      wx.showLoading({
+        title: '',
+      })
+      if (this.data.page < this.data.pageTotle) {
+        this.setData({
+          page: this.data.page+=1
+        })
+        console.log('%c第几页：', 'color: yellow')
+        console.log(this.data.page)
+        this.adminCompanyListGet()
+      } else {
+        wx.showToast({
+          title: '已经到底了哦',
+          icon: 'none'
+        })
+      }
+    }
   },
   /**
    * 生命周期函数--监听页面加载
@@ -114,7 +157,11 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    this.setData({
+      companylist: []
+    })
+    console.log('页面隐藏')
+    console.log(this.data.companylist) 
   },
 
   /**
@@ -128,29 +175,14 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    wx.showLoading({
-      title: '',
-    })
-    if (this.data.page < this.data.pageTotle) {
-      this.setData({
-        page: this.data.page+=1
-      })
-      console.log('%c第几页：', 'color: yellow')
-      console.log(this.data.page)
-      this.adminCompanyListGet()
-    } else {
-      wx.showToast({
-        title: '已经到底了哦',
-        icon: 'none'
-      })
-    }
+    
   },
 
   /**

@@ -7,7 +7,7 @@
 		</view>
 		<view class="wxsearch-cancel" wx:if="{{searchvalue.length>0}}" bindtap="searchclear">取消</view>
 	</view>
-	<view class="wxlist">
+	<view class="wxlist" bindtouchstart="wxlisttouchstart" bindtouchmove="wxlisttouchmove" bindtouchend="wxlisttouchend">
 		<mp-cells ext-class="my-cells">
 			<mp-cell ext-class="my-cell" link wx:for="{{companylist}}" wx:key="index" bindtap="itemClick" data-id="{{item._id}}">
 				<view class="wxlist-item">
