@@ -59,10 +59,10 @@ Page({
     const clientYDiffer = this.data.clientY-e.changedTouches[0].clientY
     const timeStampDiffer = e.timeStamp-this.data.timeStamp
     console.log('%cclientY差值（滑动y轴坐标差）:', 'color:yellow')
-    console.log(clientYdiffer)
-    console.log('%timeStamp差值（滑动时差）:', 'color:yellow')
+    console.log(clientYDiffer)
+    console.log('%ctimeStamp差值（滑动时差）:', 'color:yellow')
     console.log(timeStampDiffer)
-    if (clientYDiffer>160) {
+    if (clientYDiffer>150 && timeStampDiffer<150) {
       wx.showLoading({
         title: '',
       })
@@ -158,7 +158,8 @@ Page({
    */
   onHide: function () {
     this.setData({
-      companylist: []
+      companylist: [],
+      page: 1
     })
     console.log('页面隐藏')
     console.log(this.data.companylist) 
