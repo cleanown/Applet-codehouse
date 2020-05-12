@@ -17,5 +17,11 @@
 				<view slot="footer">{{item.province}}</view>
 			</mp-cell>
 		</mp-cells>
+		<view class="foot" wx:if="{{page<pageTotle}}">
+			<text>↑↑ 更多 ↑↑</text>
+		</view>
+		<view class="foot" wx:else >
+			<text>已经到底了！</text>
+		</view>
 	</view>
 </view>
