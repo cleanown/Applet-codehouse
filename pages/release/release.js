@@ -112,7 +112,7 @@ Page({
         companyname: this.data.cpName,
         companydetail: this.data.cpDetail,
         province: this.data.region.slice(0,1).join(),
-        city: this.data.cpAdress
+        city: this.data.region.slice(1,2).join()
       }
       request.post(release, data).then((res) => {
         console.log(res)
@@ -123,6 +123,12 @@ Page({
           setTimeout(() => {
             wx.switchTab({
               url: '/pages/index/index',
+            })
+            this.setData({
+              cpName: '',
+              cpDetail: '',
+              region: '',
+              cpAdress: ''
             })
           }, 1500)
         }

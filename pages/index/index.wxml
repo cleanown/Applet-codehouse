@@ -18,4 +18,5 @@
 			</mp-cell>
 		</mp-cells>
 	</view>
+	<view style="text-align: center;color: #999;margin: 10px" wx:if="{{companylist == ''}}">无数据..</view>
 </view>

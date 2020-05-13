@@ -23,8 +23,9 @@ Page({
       type: 'warn',
       text: '删除',
     }],
-    itemid: '',
-    isverify: ''
+    buttonsDelete: [{text: '取消'}, {text: '确定'}],
+    dialogShowDelete: false,
+    itemid: ''
   },
   // 搜索框
   search: function (e) {
@@ -99,28 +100,25 @@ Page({
   // 子项左滑
   slideButtonTap: function (e) {
     console.log('%c文章id：', 'color: yellow')
-    console.log(e.currentTarget.dataset.id)
     this.setData({
-      itemid: e.currentTarget.dataset.id,
-      isverify: e.currentTarget.dataset.item.isverify
+      itemid: e.currentTarget.dataset.id
     })
     console.log(this.data.itemid)
-    console.log(this.data.isverify)
     switch (e.detail.index) {
       case 0:
-        this.itemAdopt()
+        this.itemAdopt(e)
         break;
       case 1:
-        this.itemPass()
+        this.itemPass(e)
         break;
-      case 1:
-        this.itemDelete()
+      case 2:
+        this.itemDelete(e)
         break;
     }
   },
-  itemAdopt: function () {
-    if (this.data.isverify == false) {
-      this.isverifyJudge()
+  itemAdopt: function (e) {
+    if (e.currentTarget.dataset.item.isverify == false) {
+      this.isverifyJudge(e)
     } else {
       wx.showToast({
         title: '重复操作',
@@ -128,9 +126,9 @@ Page({
       })
     }
   },
-  itemPass: function () {
-    if (this.data.isverify == true) {
-      this.isverifyJudge()
+  itemPass: function (e) {
+    if (e.currentTarget.dataset.item.isverify == true) {
+      this.isverifyJudge(e)
     } else {
       wx.showToast({
         title: '重复操作',
@@ -138,13 +136,17 @@ Page({
       })
     }
   },
-  isverifyJudge: function () {
-    console.log('isverifyJudge')
-    request.put(isverify, {
-      status: this.data.isverify,
+  isverifyJudge: function (e) {
+    console.log('%c操作状态：','color:yellow')
+    request.put(verify, {
+      status: !e.currentTarget.dataset.item.isverify,
       companyid: e.currentTarget.dataset.id
     }).then((res) => {
       console.log(res)
+      wx.showToast({
+        title: res.msg,
+      })
+      this.adminCompanyListGet()
     }).catch((res) => {
       wx.showToast({
         title: res.msg,
@@ -152,7 +154,42 @@ Page({
       })
     })
   },
-  itemDelete: function () {},
+  // 删除操作
+  itemDelete: function (e) {
+    this.setData({
+      dialogShowDelete: true
+    })
+  },
+  tapDialogButtonDelete: function (e) {
+    if (e.detail.index === 0) {
+      this.setData({
+        dialogShowDelete: false
+      })
+    } else {
+      this.articleDelete()
+    }
+  },
+  articleDelete: function () {
+    this.setData({
+      dialogShowDelete: false
+    })
+    const url = `${admindelete}?companyid=${this.data.itemid}`
+    request.remove(url).then((res) => {
+      if (res.code === 200) {
+        console.log('%c删除状态：','color: yellow')
+        console.log(res)
+        wx.showToast({
+          title: res.msg,
+        })
+        this.adminCompanyListGet()
+      }
+    }).catch((res) => {
+      wx.showToast({
+        title: res.msg,
+        icon: 'none'
+      })
+    })
+  },
 
 
   /**

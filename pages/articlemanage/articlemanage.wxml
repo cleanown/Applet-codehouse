@@ -24,11 +24,18 @@
 				</mp-cell>
 			</mp-slideview>
 		</mp-cells>
-		<view class="foot" wx:if="{{page<pageTotle}}">
-			<text>↑↑ 更多 ↑↑</text>
-		</view>
-		<view class="foot" wx:else >
-			<text>已经到底了！</text>
+		<view style="text-align: center;color: #999;margin: 10px" wx:if="{{companylist == ''}}">无数据..</view>
+		<view wx:else>
+			<view class="foot" wx:if="{{page<pageTotle}}">
+				<text>↑↑ 更多 ↑↑</text>
+			</view>
+			<view class="foot" wx:else >
+				<text>已经到底了！</text>
+			</view>
 		</view>
 	</view>
 </view>
+<!-- 删除 -->
+<mp-dialog style="color: red;text-align: center" title="注意！！！" show="{{dialogShowDelete}}" bindbuttontap="tapDialogButtonDelete" buttons="{{buttonsDelete}}">
+  <view>确定删除该文章?</view>
+</mp-dialog>

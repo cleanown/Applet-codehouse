@@ -2,7 +2,8 @@
   "usingComponents": {
     "mp-cells": "../../miniprogram_npm/weui-miniprogram/cells/cells",
     "mp-slideview": "../../miniprogram_npm/weui-miniprogram/slideview/slideview",
-    "mp-cell": "../../miniprogram_npm/weui-miniprogram/cell/cell"
+    "mp-cell": "../../miniprogram_npm/weui-miniprogram/cell/cell",
+    "mp-dialog": "../../miniprogram_npm/weui-miniprogram/dialog/dialog"
   },
   "navigationBarTitleText": "文章管理"
 }
