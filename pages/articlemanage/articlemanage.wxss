@@ -83,11 +83,11 @@
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
   box-sizing: border-box;
+  padding: 20px;
 }
 
 .cs-title {
   text-align: center;
-  margin: 5px;
   font-size: 20px;
   font-weight: bolder;
   color: rgb(62, 62, 62);
@@ -109,14 +109,41 @@
   margin-top: 10px;
   align-items: center;
 }
-.cs-ck{
+
+.cs-ck {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.cs-ck-item{
+
+.cs-ck-item {
   margin: 5px;
+}
+.cs-date {
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.cs-data-item{
+  display: flex;
+}
+
+.cs-pk-item{
+  width: 110px;
+  text-align: center;
+  border-bottom: 1px solid #999;
+  color: green;
+}
+.cs-bt{
+  background-color: blue;
+  margin-top: 30px;
+  color: #fff;
+}
+.hover-class{
+  background-color: rgb(4, 4, 175);
 }
 .wxlist {
   margin-top: 56px;

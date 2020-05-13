@@ -26,7 +26,9 @@ Page({
     buttonsDelete: [{text: '取消'}, {text: '确定'}],
     dialogShowDelete: false,
     itemid: '',
-    filtrate: true,
+    filtrate: false,
+    oldDate: '',
+    newDate: '',
   },
   // 搜索框
   search: function (e) {
@@ -208,8 +210,17 @@ Page({
       filtrate: false
     })
   },
-  bindbuttontap: function (e) {
+  bindDateChangeOld: function (e) {
     console.log(e.detail.value)
+    this.setData({
+      oldDate: e.detail.value
+    })
+  },
+  bindDateChangeNew: function (e) {
+    console.log(e.detail.value)
+    this.setData({
+      newDate: e.detail.value
+    })
   },
 
 

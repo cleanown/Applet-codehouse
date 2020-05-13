@@ -17,26 +17,38 @@
 	</view>
 	<!-- 筛选 -->
 	<view wx:if="{{filtrate}}" class="filtrate">
-	 <view class="choose-item-top" bindtap="chooseClose"></view>
-	 <view class="choose-item-bottom">
-	 	<view class="cs-title">筛选</view>
-		<view class="cs-all">
-			<switch>全部</switch>
-		</view>
-		<checkbox-group class="cs-ck-group" bindchange="bindbuttontap">
-			<view class="cs-ck">
-				<checkbox class="cs-ck-item" value="1">审核已通过</checkbox>
-				<checkbox class="cs-ck-item" value="2">审核未通过</checkbox>
+	 	<view class="choose-item-top" bindtap="chooseClose"></view>
+	 	<view class="choose-item-bottom">
+			<view class="cs-title">筛选</view>
+			<view class="cs-all">
+				<switch>全部</switch>
 			</view>
-			<view class="cs-ck">
-				<checkbox class="cs-ck-item" value="3">文章已删除</checkbox>
-				<checkbox class="cs-ck-item" value="4">文章未删除</checkbox>
+			<checkbox-group class="cs-ck-group" bindchange="bindbuttontap">
+				<view class="cs-ck">
+					<checkbox class="cs-ck-item" value="1">审核已通过</checkbox>
+					<checkbox class="cs-ck-item" value="2">审核未通过</checkbox>
+				</view>
+				<view class="cs-ck">
+					<checkbox class="cs-ck-item" value="3">文章已删除</checkbox>
+					<checkbox class="cs-ck-item" value="4">文章未删除</checkbox>
+				</view>
+			</checkbox-group>
+			<view class="cs-date">
+				<picker mode="date" value="{{oldDate}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChangeOld">
+					<view class="cs-data-item">
+						<view>开始日期: </view>
+						<view class="cs-pk-item">{{oldDate}}</view>
+					</view>
+				</picker>
+				<picker mode="date" value="{{newDate}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChangeNew">
+					<view class="cs-data-item">
+						<view>结束日期: </view>
+						<view class="cs-pk-item">{{newDate}}</view>
+					</view>
+				</picker>
 			</view>
-		</checkbox-group>
-		<picker mode="date" >
-			当前选择：{{region[0]}} {{region[1]}} {{region[2]}}
-		</picker>
-	 </view>
+			<button class="cs-bt" style="width: 100%;font-weight: normal;" hover-class="hover-class">确定</button>
+	 	</view>
 	</view>
 	<!-- 列表 -->
 	<view class="wxlist" bindtouchstart="wxlisttouchstart" bindtouchmove="wxlisttouchmove" bindtouchend="wxlisttouchend">
