@@ -7,20 +7,48 @@
 			<input bindinput="search" placeholder="输入你想搜索的公司" value="{{searchvalue}}"/>
 		</view>
 		<view class="wxsearch-cancel" wx:if="{{searchvalue.length>0}}" bindtap="searchclear">取消</view>
+		<view class="choose" bindtap="choose">
+			<text>筛选</text>
+			<view class="choose-icon">
+				<image class="choose-img" src="../../images/arrow_down.png" mode="aspectFill" style="transform: rotate(180deg);" wx:if="{{filtrate}}"></image>
+				<image class="choose-img" src="../../images/arrow_down.png" mode="aspectFill" wx:else ></image>
+			</view>
+		</view>
 	</view>
 	<!-- 筛选 -->
-	<view></view>
+	<view wx:if="{{filtrate}}" class="filtrate">
+	 <view class="choose-item-top" bindtap="chooseClose"></view>
+	 <view class="choose-item-bottom">
+	 	<view class="cs-title">筛选</view>
+		<view class="cs-all">
+			<switch>全部</switch>
+		</view>
+		<checkbox-group class="cs-ck-group" bindchange="bindbuttontap">
+			<view class="cs-ck">
+				<checkbox class="cs-ck-item" value="1">审核已通过</checkbox>
+				<checkbox class="cs-ck-item" value="2">审核未通过</checkbox>
+			</view>
+			<view class="cs-ck">
+				<checkbox class="cs-ck-item" value="3">文章已删除</checkbox>
+				<checkbox class="cs-ck-item" value="4">文章未删除</checkbox>
+			</view>
+		</checkbox-group>
+		<picker mode="date" >
+			当前选择：{{region[0]}} {{region[1]}} {{region[2]}}
+		</picker>
+	 </view>
+	</view>
 	<!-- 列表 -->
 	<view class="wxlist" bindtouchstart="wxlisttouchstart" bindtouchmove="wxlisttouchmove" bindtouchend="wxlisttouchend">
 		<mp-cells ext-class="my-cells">
-			<mp-slideview ext-class buttons="{{slideButtons}}" bindbuttontap="slideButtonTap" wx:for="{{companylist}}" wx:key="index" bindtap="itemClick" data-item="{{item}}" data-id="{{item._id}}">
+			<mp-slideview ext-class="slideview" buttons="{{slideButtons}}" bindbuttontap="slideButtonTap" wx:for="{{companylist}}" wx:key="index" bindtap="itemClick" data-item="{{item}}" data-id="{{item._id}}">
 				<mp-cell ext-class="my-cell" link>
 					<view class="wxlist-item">
 						<view class="sort">{{index+1}}</view>
 						<view class="companyname" style="color: orange" wx:if="{{!item.isverify}}">{{item.companyname}}</view>
 						<view class="companyname" style="color: green" wx:else >{{item.companyname}}</view>
 					</view>
-					<view slot="footer">{{item.province}}</view>
+					<view slot="footer">{{item.city}}</view>
 				</mp-cell>
 			</mp-slideview>
 		</mp-cells>

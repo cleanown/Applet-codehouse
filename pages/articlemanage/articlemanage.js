@@ -25,7 +25,8 @@ Page({
     }],
     buttonsDelete: [{text: '取消'}, {text: '确定'}],
     dialogShowDelete: false,
-    itemid: ''
+    itemid: '',
+    filtrate: true,
   },
   // 搜索框
   search: function (e) {
@@ -143,14 +144,17 @@ Page({
       companyid: e.currentTarget.dataset.id
     }).then((res) => {
       console.log(res)
-      wx.showToast({
+      wx.showLoading({
         title: res.msg,
+      })
+      this.setData({
+        page: 1,
+        companylist: []
       })
       this.adminCompanyListGet()
     }).catch((res) => {
-      wx.showToast({
+      wx.showLoading({
         title: res.msg,
-        icon: 'none'
       })
     })
   },
@@ -178,18 +182,37 @@ Page({
       if (res.code === 200) {
         console.log('%c删除状态：','color: yellow')
         console.log(res)
-        wx.showToast({
-          title: res.msg,
+        wx.showLoading({
+          title: res.msg
+        })
+        this.setData({
+          page: 1,
+          companylist: []
         })
         this.adminCompanyListGet()
       }
     }).catch((res) => {
       wx.showToast({
         title: res.msg,
-        icon: 'none'
       })
     })
   },
+  // 筛选
+  choose: function () {
+    this.setData({
+      filtrate: !this.data.filtrate
+    })
+  },
+  chooseClose: function () {
+    this.setData({
+      filtrate: false
+    })
+  },
+  bindbuttontap: function (e) {
+    console.log(e.detail.value)
+  },
+
+
 
 
   /**

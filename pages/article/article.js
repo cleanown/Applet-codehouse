@@ -255,6 +255,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.showLoading({
+      title: '',
+    })
     this.setData({
       companyid: options.id,
       userinfo: app.globalData.userinfo,
@@ -266,6 +269,9 @@ Page({
     }).then((res) => {
       // console.log(res)
       if (res.code === 200) {
+        wx.hideLoading({
+          complete: (res) => {},
+        })
         this.setData({
           company: res.data,
           isverify: res.data.isverify,
