@@ -22,7 +22,9 @@ Page({
     },{
       type: 'warn',
       text: '删除',
-    }]
+    }],
+    itemid: '',
+    isverify: ''
   },
   // 搜索框
   search: function (e) {
@@ -98,21 +100,27 @@ Page({
   slideButtonTap: function (e) {
     console.log('%c文章id：', 'color: yellow')
     console.log(e.currentTarget.dataset.id)
+    this.setData({
+      itemid: e.currentTarget.dataset.id,
+      isverify: e.currentTarget.dataset.item.isverify
+    })
+    console.log(this.data.itemid)
+    console.log(this.data.isverify)
     switch (e.detail.index) {
       case 0:
-        this.itemAdopt(e)
+        this.itemAdopt()
         break;
       case 1:
-        this.itemPass(e)
+        this.itemPass()
         break;
       case 1:
-        this.itemDelete(e)
+        this.itemDelete()
         break;
     }
   },
-  itemAdopt: function (e) {
-    if (e.currentTarget.dataset.item.isverify == false) {
-      this.isverifyJudge(e)
+  itemAdopt: function () {
+    if (this.data.isverify == false) {
+      this.isverifyJudge()
     } else {
       wx.showToast({
         title: '重复操作',
@@ -120,9 +128,9 @@ Page({
       })
     }
   },
-  itemPass: function (e) {
-    if (e.currentTarget.dataset.item.isverify == true) {
-      this.isverifyJudge(e)
+  itemPass: function () {
+    if (this.data.isverify == true) {
+      this.isverifyJudge()
     } else {
       wx.showToast({
         title: '重复操作',
@@ -130,10 +138,10 @@ Page({
       })
     }
   },
-  isverifyJudge: function (e) {
+  isverifyJudge: function () {
     console.log('isverifyJudge')
     request.put(isverify, {
-      status: !e.currentTarget.dataset.item.isverify,
+      status: this.data.isverify,
       companyid: e.currentTarget.dataset.id
     }).then((res) => {
       console.log(res)
