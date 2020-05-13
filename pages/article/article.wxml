@@ -95,8 +95,11 @@
   </view>
   <!-- 删除审核按钮 -->
   <view class="userchange" wx:if="{{userinfo.role>1}}">
-    <mp-icon class="userchange-icon" icon="delete" size="30" color="red"/>
-    <mp-icon class="userchange-icon" wx:if="{{isverify}}" icon="report-problem" size="30"  color="orange"/>
-    <mp-icon class="userchange-icon" wx:else icon="done2" size="30" color="green"/>
+    <mp-icon class="userchange-icon" icon="delete" size="30" color="red" bindtap="dialogShowDelete"/>
+    <mp-icon class="userchange-icon" icon="{{judgeicon}}" size="30"  color="{{judgecolor}}" bindtap="isverifyJudge"/>
   </view>
 </view>
+<!-- 删除弹窗 -->
+<mp-dialog style="color: red;text-align: center" title="注意！！！" show="{{dialogShowDelete}}" bindbuttontap="tapDialogButtonDelete" buttons="{{buttonsDelete}}">
+  <view>确定删除该文章?</view>
+</mp-dialog>

@@ -26,8 +26,14 @@ Page({
     isverify: '',
     userid: '',
     linkid: '',
-    linkname: ''
+    linkname: '',
+    buttonsDelete: [{text: '取消'}, {text: '确定'}],
+    dialogShowDelete: false,
+    judgeicon: '',
+    judgecolor: ''
+
   },
+  // 收藏
   star: function () {
     if (this.data.starcolor === 'black') {
       wx.showToast({
@@ -43,6 +49,7 @@ Page({
       startype: this.data.startype === 'outline' ? 'field' : 'outline'
     })
   },
+  // 喜欢
   like: function () {
     if (this.data.likecolor === 'black') {
       wx.showToast({
@@ -64,6 +71,7 @@ Page({
       liketype: this.data.liketype === 'outline' ? 'field' : 'outline'
     })
   },
+  // 消息发送窗口打开关闭
   comment: function () {
     this.setData({
       inputshow: true
@@ -81,6 +89,7 @@ Page({
     })
     console.log(this.data.commentvalue)
   },
+  // 评论
   commentSent: function () {
     const data = {
       commentdetail: this.data.commentvalue,
@@ -126,6 +135,7 @@ Page({
       })
     }
   },
+  // 回复
   reply: function(e) {
     this.setData({
       replyshow: true,
@@ -156,6 +166,53 @@ Page({
     console.log(`@人的linkname：${this.data.linkname}`)
     console.log(`我的id：${this.data.userid}`)
   },
+  // 删除
+  dialogShowDelete: function () {
+    this.setData({
+      dialogShowDelete: true
+    })
+  },
+  tapDialogButtonDelete: function (e) {
+    if (e.detail.index === 0) {
+      this.setData({
+        dialogShowDelete: false
+      })
+    } else {
+      this.articleDelete()
+    }
+  },
+  articleDelete: function () {
+    this.setData({
+      dialogShowDelete: false
+    })
+    const url = `${admindelete}?companyid=${this.data.companyid}`
+    request.remove(url).then((res) => {
+      if (res.code === 200) {
+        console.log('%c删除状态：','color: yellow')
+        console.log(res)
+        wx.showToast({
+          title: res.msg,
+        })
+        setTimeout(() => {
+          wx.navigateBack({
+            complete: (res) => {},
+          })
+        },1500)
+      }
+    }).catch((res) => {
+      wx.showToast({
+        title: res.msg,
+        icon: 'none'
+      })
+    })
+  },
+  // 审核通过判断
+  isverifyJudge: function (e) {
+    console.log(e)
+  },
+
+
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -190,6 +247,17 @@ Page({
         icon: 'none'
       })
     })
+    if (this.data.isverify = true) {
+      this.setData({
+        judgeicon: 'report-problem',
+        judgecolor: 'orange'
+      })
+    } else {
+      this.setData({
+        judgeicon: 'done2',
+        judgecolor: 'green'
+      })
+    }
   },
 
   /**
