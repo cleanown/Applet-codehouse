@@ -206,11 +206,49 @@ Page({
       })
     })
   },
-  // 审核通过判断
-  isverifyJudge: function (e) {
-    console.log(e)
+  // 审核通过是否判断
+  isverifyJudge: function () {
+    request.put(verify, {
+      status: !this.data.isverify,
+      companyid: this.data.companyid
+    }).then((res) => {
+      if (res.code === 200) {
+        wx.showToast({
+          title: '修改成功',
+        })
+        this.setData({
+          isverify: !this.data.isverify
+        })
+        this.isverifyShowJudge()
+        console.log('%c审核判断:','color:yellow')
+        console.log(res)
+        console.log(`isverify: ${this.data.isverify}`)
+      } else {
+        wx.showToast({
+          title: res.msg,
+          icon: 'none'
+        })
+      }
+    }).catch((res) => {
+      wx.showToast({
+        title: res.msg,
+        icon: 'none'
+      })
+    })
   },
-
+  isverifyShowJudge: function () {
+    if (this.data.isverify == true) {
+      this.setData({
+        judgeicon: 'report-problem',
+        judgecolor: 'orange'
+      })
+    } else {
+      this.setData({
+        judgeicon: 'done2',
+        judgecolor: 'green'
+      })
+    }
+  },
 
 
   /**
@@ -247,17 +285,7 @@ Page({
         icon: 'none'
       })
     })
-    if (this.data.isverify = true) {
-      this.setData({
-        judgeicon: 'report-problem',
-        judgecolor: 'orange'
-      })
-    } else {
-      this.setData({
-        judgeicon: 'done2',
-        judgecolor: 'green'
-      })
-    }
+    this.isverifyShowJudge()
   },
 
   /**
