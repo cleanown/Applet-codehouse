@@ -20,6 +20,7 @@
 }
 .cpnameInput{
   border-bottom: 1px solid #999;
+  text-indent: 2em;
   height: 40px;
 }
 .cpDetail{
