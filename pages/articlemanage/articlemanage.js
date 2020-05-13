@@ -1,6 +1,6 @@
 // pages/articlemanage/articlemanage.js
 import request from '../../api/request'
-import { adminCompanyList } from '../../api/api'
+import { adminCompanyList, admindelete, verify} from '../../api/api'
 Page({
 
   /**
@@ -12,8 +12,19 @@ Page({
     page: 1,
     pageTotle: '',
     clientY: '',
-    timeStamp: ''
+    timeStamp: '',
+    slideButtons: [{
+      text: '通过',
+      extClass: '',
+    },{
+      text: '不通过',
+      extClass: '',
+    },{
+      type: 'warn',
+      text: '删除',
+    }]
   },
+  // 搜索框
   search: function (e) {
     this.setData({
       searchvalue: e.detail.value,
@@ -34,12 +45,14 @@ Page({
     })
     this.adminCompanyListGet()
   },
+  // 子项点击
   itemClick (e) {
     console.log(e.currentTarget.dataset.id)
     wx.navigateTo({
       url: '/pages/article/article?id='+e.currentTarget.dataset.id+'',
     })
   },
+  // 上下滑动
   wxlisttouchstart: function (e) {
     // console.log(`%c开始:`,'color: yellow')
     // console.log(e.timeStamp)
@@ -58,10 +71,10 @@ Page({
     // console.log(e.changedTouches[0].clientY)
     const clientYDiffer = this.data.clientY-e.changedTouches[0].clientY
     const timeStampDiffer = e.timeStamp-this.data.timeStamp
-    console.log('%cclientY差值（滑动y轴坐标差）:', 'color:yellow')
-    console.log(clientYDiffer)
-    console.log('%ctimeStamp差值（滑动时差）:', 'color:yellow')
-    console.log(timeStampDiffer)
+    // console.log('%cclientY差值（滑动y轴坐标差）:', 'color:yellow')
+    // console.log(clientYDiffer)
+    // console.log('%ctimeStamp差值（滑动时差）:', 'color:yellow')
+    // console.log(timeStampDiffer)
     if (clientYDiffer>150 && timeStampDiffer<150) {
       wx.showLoading({
         title: '',
@@ -81,6 +94,59 @@ Page({
       }
     }
   },
+  // 子项左滑
+  slideButtonTap: function (e) {
+    console.log('%c文章id：', 'color: yellow')
+    console.log(e.currentTarget.dataset.id)
+    switch (e.detail.index) {
+      case 0:
+        this.itemAdopt(e)
+        break;
+      case 1:
+        this.itemPass(e)
+        break;
+      case 1:
+        this.itemDelete(e)
+        break;
+    }
+  },
+  itemAdopt: function (e) {
+    if (e.currentTarget.dataset.item.isverify == false) {
+      this.isverifyJudge(e)
+    } else {
+      wx.showToast({
+        title: '重复操作',
+        icon: 'none'
+      })
+    }
+  },
+  itemPass: function (e) {
+    if (e.currentTarget.dataset.item.isverify == true) {
+      this.isverifyJudge(e)
+    } else {
+      wx.showToast({
+        title: '重复操作',
+        icon: 'none'
+      })
+    }
+  },
+  isverifyJudge: function (e) {
+    console.log('isverifyJudge')
+    request.put(isverify, {
+      status: !e.currentTarget.dataset.item.isverify,
+      companyid: e.currentTarget.dataset.id
+    }).then((res) => {
+      console.log(res)
+    }).catch((res) => {
+      wx.showToast({
+        title: res.msg,
+        icon: 'none'
+      })
+    })
+  },
+  itemDelete: function () {},
+
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -161,8 +227,6 @@ Page({
       companylist: [],
       page: 1
     })
-    console.log('页面隐藏')
-    console.log(this.data.companylist) 
   },
 
   /**
