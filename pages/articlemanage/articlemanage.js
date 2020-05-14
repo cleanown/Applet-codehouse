@@ -242,11 +242,11 @@ Page({
     }
   },
   // 多选
-  bindbuttontap: function (e) {
-    // console.log(e.detail.value)
-    const ckGroup = e.detail.value.join(' ')
-    console.log(ckGroup)
-    console.log(ckGroup.indexOf(2))
+  isverifybindbuttontap: function (e) {
+    console.log(e.detail.value)
+  },
+  isdeletebindbuttontap: function (e) {
+    console.log(e.detail.value)
   },
   // 日期
   oldbindcancel: function () {

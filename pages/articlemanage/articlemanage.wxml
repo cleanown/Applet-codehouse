@@ -23,16 +23,16 @@
 				<view class="cs-all">
 					<switch bindchange="switchAll">全部</switch>
 				</view>
-				<checkbox-group class="cs-ck-group" style="color: {{allStyle}}" bindchange="bindbuttontap">
-					<view class="cs-ck">
+				<view class="cs-ck-group" style="color: {{allStyle}}">
+					<checkbox-group class="cs-ck" bindchange="isverifybindbuttontap">
 						<checkbox class="cs-ck-item" checked="{{checked}}" value="1" disabled="{{disabled}}">审核已通过</checkbox>
 						<checkbox class="cs-ck-item" checked="{{checked}}" value="2" disabled="{{disabled}}">审核未通过</checkbox>
-					</view>
-					<view class="cs-ck">
+					</checkbox-group>
+					<checkbox-group class="cs-ck" bindchange="isdeletebindbuttontap">
 						<checkbox class="cs-ck-item" checked="{{checked}}" value="3" disabled="{{disabled}}">已删除文章</checkbox>
 						<checkbox class="cs-ck-item" checked="{{checked}}" value="4" disabled="{{disabled}}">未删除文章</checkbox>
-					</view>
-				</checkbox-group>
+					</checkbox-group>
+				</view>
 				<view class="cs-date" style="color: {{allStyle}}">
 					<picker mode="date" value="{{oldDate}}" start="2020-03-01" end="{{nowDate}}" bindchange="bindDateChangeOld" disabled="{{disabled}}" bindcancel="oldbindcancel">
 						<view class="cs-date-item">
