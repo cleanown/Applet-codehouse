@@ -27,8 +27,9 @@ Page({
     buttonsDelete: [{text: '取消'}, {text: '确定'}],
     dialogShowDelete: false,
     itemid: '',
-    filtrate: false,
-    disabled: false,
+    filtrate: true,
+    allStyle: '#999',
+    disabled: true,
     nowDate: '',
     oldDate: '',
     newDate: '',
@@ -213,10 +214,15 @@ Page({
       filtrate: false
     })
   },
-
+  // 总开关
+  switchAll: function (e) {
+    console.log(`%cswitch全部（状态）：${e.detail.value}`,'color: yellow')
+  },
+  // 多选
   bindbuttontap: function (e) {
     console.log(e.detail.value)
   },
+  // 日期
   bindDateChangeOld: function (e) {
     console.log(e.detail.value)
     this.setData({
