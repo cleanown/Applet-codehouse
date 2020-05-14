@@ -1,4 +1,5 @@
 // pages/articlemanage/articlemanage.js
+var app = getApp()
 import request from '../../api/request'
 import { adminCompanyList, admindelete, verify} from '../../api/api'
 var timer = require('../../utils/util')
@@ -28,11 +29,17 @@ Page({
     dialogShowDelete: false,
     itemid: '',
     filtrate: true,
-    allStyle: '#999',
-    disabled: true,
+    allStyle: '',
+    checked: '',
+    disabled: false,
+    borderbottom: 'solid',
+    isverify: '',
+    isdelete: '',
     nowDate: '',
-    oldDate: '',
-    newDate: '',
+    beginDate: '',
+    endDate: '',
+    beginTime: '',
+    endTime: '',
   },
   // 搜索框
   search: function (e) {
@@ -217,25 +224,74 @@ Page({
   // 总开关
   switchAll: function (e) {
     console.log(`%cswitch全部（状态）：${e.detail.value}`,'color: yellow')
+    if (e.detail.value == true) {
+      this.setData({
+        disabled: true,
+        checked: false,
+        allStyle: '#999',
+        borderbottom: 'dashed',
+        beginDate: '',
+        endDate: ''
+      })
+    } else {
+      this.setData({
+        disabled: false,
+        borderbottom: 'solid',
+        allStyle: ''
+      })
+    }
   },
   // 多选
   bindbuttontap: function (e) {
-    console.log(e.detail.value)
+    // console.log(e.detail.value)
+    const ckGroup = e.detail.value.join(' ')
+    console.log(ckGroup)
+    console.log(ckGroup.indexOf(2))
   },
   // 日期
+  oldbindcancel: function () {
+    this.setData({
+      beginDate: ''
+    })
+  },
   bindDateChangeOld: function (e) {
+    console.log('%c开始日期:','color: yellow')
     console.log(e.detail.value)
     this.setData({
-      oldDate: e.detail.value
+      beginDate: e.detail.value,
+      beginTime: new Date(e.detail.value).getTime()
+    })
+    console.log(this.data.beginTime)
+  },
+
+  newbindcancel: function () {
+    this.setData({
+      endDate: ''
     })
   },
   bindDateChangeNew: function (e) {
+    console.log('%c结束日期:','color: yellow')
     console.log(e.detail.value)
     this.setData({
-      newDate: e.detail.value
+      endDate: e.detail.value,
+      endTime: new Date(e.detail.value).getTime()
     })
+    console.log(this.data.endTime)
   },
-
+  confirmClick: function () {
+    if (this.data.beginTime>this.data.endTime) {
+      wx.showToast({
+        title: '开始日期应小于结束日期',
+        icon: 'none'
+      })
+      this.setData({
+        beginDate: '',
+        endDate: '',
+        beginTime: '',
+        endTime: '',
+      })
+    }
+  },
 
 
 
@@ -278,8 +334,8 @@ Page({
       // isverify: '',
       // isdelete: '',
       hotkey: this.data.searchvalue,
-      // beginTime: '',
-      // endTime: ''
+      beginTime: this.data.beginTime,
+      endTime: this.data.endTime
     }
     request.post(adminCompanyList, data).then((res) => {
       // console.log(res)

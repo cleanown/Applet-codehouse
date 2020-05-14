@@ -9,7 +9,8 @@
     "pages/articlemanage/articlemanage",
     "pages/usermanage/usermanage",
     "pages/userdetail/userdetail",
-    "pages/about/about"
+    "pages/about/about",
+    "pages/test/test"
   ],
   "window":{
     "backgroundTextStyle":"light",

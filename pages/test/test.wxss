@@ -1,53 +1,8 @@
-/* pages/articlemanage/articlemanage.wxss */
-.wxsearch {
-  position: fixed;
-  display: flex;
-  align-items: center;
+/* pages/test/test.wxss */
+.home{
   width: 100%;
-  height: 56px;
-  background-color: #eee;
-  top: 0;
-  z-index: 3;
   box-sizing: border-box;
-  padding: 10px;
 }
-
-.wxsearch-detail {
-  display: flex;
-  flex: 1;
-  height: 36px;
-  background-color: #fff;
-  border-radius: 2px;
-  padding-left: 5px;
-  align-items: center;
-}
-
-.wxsearch-cancel {
-  margin-left: 10px;
-  margin-right: 5px;
-}
-
-.choose {
-  margin: 5px 0px 5px 9px;
-  padding: 3px 5px;
-  background-color: #fff;
-  color: #666;
-  font-size: 12px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.choose-icon {
-  height: 15px;
-  width: 15px;
-}
-
-.choose-img {
-  width: 100%;
-  height: 100%;
-}
-
 .filtrate {
   position: fixed;
   width: 100%;
@@ -56,7 +11,11 @@
   height: 100%;
   z-index: 2;
   box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   z-index: 4;
+  border-bottom: 1px solid #666;
 }
 
 .choose-item-top {
@@ -65,8 +24,7 @@
   width: 100%;
   background-color: #000;
   opacity: 0.5;
-  box-sizing: border-box;
-  height: 100%;
+  height: 50%;
   border-start-start-radius: 5px;
 }
 
@@ -74,7 +32,7 @@
   position: absolute;
   bottom: 0;
   width: 100%;
-  margin-bottom: 56px;
+  height: 65%;
   background-color: #fff;
   border: 1px solid #999;
   border-top-left-radius: 15px;
@@ -118,75 +76,32 @@
 .cs-ck-item {
   margin: 5px;
 }
-
 .cs-date {
   width: 100%;
-  box-sizing: border-box;
   margin-top: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-
-.cs-date-item {
+.cs-data-item{
   display: flex;
-  box-sizing: border-box;
   width: 100%;
   margin-bottom: 20px;
 }
-
-.cs-date-title {
+.cd-data-title{
   width: 100px;
 }
-
-.cs-pk-item {
+.cs-pk-item{
   width: 100%;
   text-align: center;
+  border-bottom: 1px solid #999;
   color: green;
 }
-
-.cs-bt {
+.cs-bt{
   background-color: blue;
   margin-top: 10px;
   color: #fff;
 }
-
-.hover-class {
+.hover-class{
   background-color: rgb(4, 4, 175);
-}
-
-.wxlist {
-  margin-top: 56px;
-}
-
-.slideview {
-  z-index: 1;
-}
-
-.wxlist-item {
-  display: flex;
-  justify-content: space-around;
-}
-
-.sort {
-  width: 30px;
-  height: 30px;
-}
-
-.sort-img {
-  width: 100%;
-  height: 100%;
-  border-radius: 100%;
-}
-
-.companyname {
-  flex: 1;
-  margin-left: 15px;
-}
-
-.foot {
-  margin-top: 15px;
-  margin-bottom: 15px;
-  text-align: center;
-  color: #999;
 }

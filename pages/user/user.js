@@ -58,6 +58,11 @@ Page({
           url: '/pages/usermanage/usermanage',
         })
         break;
+      case 3:
+        wx.navigateTo({
+          url: '/pages/test/test',
+        })
+        break;
         case 4:
         wx.navigateTo({
           url: '/pages/about/about',
