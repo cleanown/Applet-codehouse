@@ -23,7 +23,7 @@
 			<view class="cs-all">
 				<switch>全部</switch>
 			</view>
-			<checkbox-group class="cs-ck-group" bindchange="bindbuttontap">
+			<checkbox-group class="cs-ck-group" bindchange="bindbuttontap" disabled="{{disabled}}">
 				<view class="cs-ck">
 					<checkbox class="cs-ck-item" value="1">审核已通过</checkbox>
 					<checkbox class="cs-ck-item" value="2">审核未通过</checkbox>
@@ -34,13 +34,13 @@
 				</view>
 			</checkbox-group>
 			<view class="cs-date">
-				<picker mode="date" value="{{oldDate}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChangeOld">
+				<picker mode="date" value="{{oldDate}}" start="2015-09-01" end="{{nowDate}}" bindchange="bindDateChangeOld" disabled="{{disabled}}">
 					<view class="cs-data-item">
 						<view>开始日期: </view>
 						<view class="cs-pk-item">{{oldDate}}</view>
 					</view>
 				</picker>
-				<picker mode="date" value="{{newDate}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChangeNew">
+				<picker mode="date" value="{{newDate}}" start="2015-09-01" end="{{nowDate}}" bindchange="bindDateChangeNew" disabled="{{disabled}}">
 					<view class="cs-data-item">
 						<view>结束日期: </view>
 						<view class="cs-pk-item">{{newDate}}</view>

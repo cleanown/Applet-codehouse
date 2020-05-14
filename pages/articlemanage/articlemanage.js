@@ -1,6 +1,7 @@
 // pages/articlemanage/articlemanage.js
 import request from '../../api/request'
 import { adminCompanyList, admindelete, verify} from '../../api/api'
+var timer = require('../../utils/util')
 Page({
 
   /**
@@ -27,6 +28,8 @@ Page({
     dialogShowDelete: false,
     itemid: '',
     filtrate: false,
+    disabled: false,
+    nowDate: '',
     oldDate: '',
     newDate: '',
   },
@@ -210,6 +213,10 @@ Page({
       filtrate: false
     })
   },
+
+  bindbuttontap: function (e) {
+    console.log(e.detail.value)
+  },
   bindDateChangeOld: function (e) {
     console.log(e.detail.value)
     this.setData({
@@ -246,6 +253,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.setData({
+      nowDate: timer.formatTime(new Date())
+    })
+    console.log('%c现在时间：', 'color: yellow')
+    console.log(this.data.nowDate)
     this.adminCompanyListGet()
   },
   adminCompanyListGet: function () {
