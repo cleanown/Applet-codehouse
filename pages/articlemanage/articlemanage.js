@@ -28,7 +28,7 @@ Page({
     buttonsDelete: [{text: '取消'}, {text: '确定'}],
     dialogShowDelete: false,
     itemid: '',
-    filtrate: true,
+    filtrate: false,
     allStyle: '',
     checked: '',
     disabled: false,
@@ -223,13 +223,14 @@ Page({
   },
   // 总开关
   switchAll: function (e) {
-    console.log(`%cswitch全部（状态）：${e.detail.value}`,'color: yellow')
     if (e.detail.value == true) {
       this.setData({
         disabled: true,
         checked: false,
         allStyle: '#999',
         borderbottom: 'dashed',
+        isverify: '',
+        isdelete: '',
         beginDate: '',
         endDate: ''
       })
@@ -243,10 +244,40 @@ Page({
   },
   // 多选
   isverifybindbuttontap: function (e) {
-    console.log(e.detail.value)
+    console.log('%cisverify:', 'color: yellow')
+    const ckGroup = e.detail.value
+    if (ckGroup.length===0||ckGroup.length===2) {
+      this.setData({
+        isverify: ''
+      })
+    } else if (ckGroup.indexOf('1')>-1) {
+      this.setData({
+        isverify: true
+      })
+    } else {
+      this.setData({
+        isverify: false
+      })
+    }
+    console.log(this.data.isverify)
   },
   isdeletebindbuttontap: function (e) {
-    console.log(e.detail.value)
+    console.log('%cisdelete:', 'color: yellow')
+    const ckGroup = e.detail.value
+    if (ckGroup.length===0||ckGroup.length===2) {
+      this.setData({
+        isdelete: ''
+      })
+    } else if (ckGroup.indexOf('3')>-1) {
+      this.setData({
+        isdelete: true
+      })
+    } else {
+      this.setData({
+        isdelete: false
+      })
+    }
+    console.log(this.data.isdelete)
   },
   // 日期
   oldbindcancel: function () {
@@ -290,6 +321,27 @@ Page({
         beginTime: '',
         endTime: '',
       })
+    } else {
+      console.log('%c传值：', 'color: yellow')
+      console.log(`isverify: ${this.data.isverify}`)
+      console.log(`isdelete: ${this.data.isdelete}`)
+      console.log(`beginTime:${this.data.beginTime}`)
+      console.log(`endTime:${this.data.endTime}`)
+      wx.showLoading({
+        title: '',
+      })
+      this.setData({
+        companylist: [],
+        borderbottom: 'solid',
+        page: 1,
+        filtrate: false,
+        disabled: false,
+      })
+      this.adminCompanyListGet()
+      this.setData({
+        isverify: '',
+        isdelete: ''
+      })
     }
   },
 
@@ -318,21 +370,13 @@ Page({
     this.setData({
       nowDate: timer.formatTime(new Date())
     })
-    console.log('%c现在时间：', 'color: yellow')
-    console.log(this.data.nowDate)
     this.adminCompanyListGet()
   },
   adminCompanyListGet: function () {
     const data = {
-      // page: this.page,
-      // isverify: this.isverify,
-      // isdelete: this.isdelete,
-      // hotkey: this.searchValue,
-      // beginTime: new Date(this.beginDate).getTime(),
-      // endTime: new Date(this.endDate).getTime() + 24 * 60 * 60 * 1000
       page: this.data.page,
-      // isverify: '',
-      // isdelete: '',
+      isverify: this.data.isverify,
+      isdelete: this.data.isdelete,
       hotkey: this.data.searchvalue,
       beginTime: this.data.beginTime,
       endTime: this.data.endTime
@@ -378,7 +422,7 @@ Page({
   onHide: function () {
     this.setData({
       companylist: [],
-      page: 1
+      page: 1,
     })
   },
 
