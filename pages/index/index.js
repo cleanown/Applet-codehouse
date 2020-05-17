@@ -46,6 +46,7 @@ Page({
   // 获取用户信息
   userinfoGet: function () {
     request.get(userinfo).then((res) => {
+      console.log(res)
       if (res.code === 200) {
         console.log('%c先获取自己的信息并存入globalData：', 'color: yellow')
         getApp().globalData.userinfo = res.data

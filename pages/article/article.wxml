@@ -11,6 +11,7 @@
       <text style="font-weight: bolder">公司地址：</text>
       <text style="color:#666">{{company.province}}/</text>
       <text style="color:#666">{{company.city}}</text>
+      <text style="color:#666">/{{company.address}}</text>
     </view>
     <view class="cplast">
       <view class="cp-auth">作者：{{company.userinfo.username}}</view>
@@ -73,7 +74,7 @@
                 <view class="comment-item-user-name" style="color: #999">{{children.userinfo.username}}</view>
               </view>
               <view class="comment-detail">
-                <view style="float: left;color: #B388FF;">@{{children.linkname}}</view>
+                <view wx:if="{{item.userid!==children.linkid}}" style="float: left;color: #B388FF;">@{{children.linkname}}</view>
                 <view>
                   {{children.commentdetail}}
                 </view>

@@ -156,7 +156,6 @@
 }
 .userchange{
   position: fixed;
-  width: 100%;
   right: 25px;
   height: 56px;
   bottom: 46px;

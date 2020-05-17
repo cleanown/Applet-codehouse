@@ -1,6 +1,6 @@
 // pages/release/release.js
 import request from '../../api/request'
-import { release } from '../../api/api'
+import { release, img } from '../../api/api'
 Page({
 
   /**
@@ -41,6 +41,8 @@ Page({
     })
     console.log(this.data.cpAdress)
   },
+
+  // 上传图片并预览
   chooseImage: function (e) {
     var that = this;
     wx.chooseImage({
@@ -112,7 +114,8 @@ Page({
         companyname: this.data.cpName,
         companydetail: this.data.cpDetail,
         province: this.data.region.slice(0,1).join(),
-        city: this.data.region.slice(1,2).join()
+        city: this.data.region.slice(1,2).join(),
+        address: this.data.cpAdress
       }
       request.post(release, data).then((res) => {
         console.log(res)

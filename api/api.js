@@ -3,6 +3,7 @@ const companylist = '/search/companylist' //首页公司列表
 const register = '/user/sign' //用户注册
 const userinfo = '/user/userinfo' // 用户信息
 const searchlist = '/search/companylist' // 公司搜索
+const img = '/upload/img' // 上传图片
 const release = '/company/add' // 发布
 const companydetail = '/company/companyDetail' // 公司详情
 const admindelete = '/company/admindelete' // 删除文章
@@ -20,6 +21,7 @@ module.exports = {
   register,
   userinfo,
   searchlist,
+  img,
   release,
   companydetail,
   admindelete,
