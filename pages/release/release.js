@@ -80,7 +80,7 @@ Page({
         },
         success: function (res) {
           console.log(res)
-          const urls = JSON.stringify(res.data.data)
+          const urls = JSON.stringify(res.data)
           console.log(urls)
           setTimeout(() => {
             resolve('urls')
