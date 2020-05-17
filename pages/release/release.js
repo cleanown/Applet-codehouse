@@ -70,9 +70,23 @@ Page({
     console.log('upload files', files)
     // 文件上传的函数，返回一个promise
     return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        reject('some error')
-      }, 1000)
+      wx.uploadFile({
+        filePath: files.tempFilePaths[0],
+        name: 'file',
+        url: 'https://api.cleanown.cn/upload/img',
+        header: {
+          'Content-Type': 'application/json; charset=UTF-8',
+          'authorization': wx.getStorageSync('token')
+        },
+        success: function (res) {
+          console.log(res)
+          const urls = JSON.stringify(res.data.data)
+          console.log(urls)
+          setTimeout(() => {
+            resolve('urls')
+          },1500)
+        }
+      })
     })
   },
   uploadError(e) {

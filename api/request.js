@@ -19,7 +19,6 @@ const request = (url, options) => {
       header: {
         // 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
         'Content-Type': 'application/json; charset=UTF-8',
-        // 'x-token': 'x-token'
         'authorization': token
       },
       success(request) {
