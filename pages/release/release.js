@@ -79,11 +79,11 @@ Page({
           'authorization': wx.getStorageSync('token')
         },
         success: function (res) {
-          console.log(res)
-          const urls = JSON.stringify(res.data)
-          console.log(urls)
+          const re = JSON.parse(res)
+          const result = re.data
+          console.log(result)
           setTimeout(() => {
-            resolve('urls')
+            resolve({result})
           },1500)
         }
       })
