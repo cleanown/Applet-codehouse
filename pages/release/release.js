@@ -79,11 +79,13 @@ Page({
           'authorization': wx.getStorageSync('token')
         },
         success: function (res) {
-          const re = JSON.parse(res)
-          const result = re.data
+          console.log('%c上传状态:','color: yellow')
+          const re = res.data
+          const result = JSON.parse(re)
           console.log(result)
+          const urls = files
           setTimeout(() => {
-            resolve({result})
+            resolve({urls})
           },1500)
         }
       })
@@ -95,6 +97,8 @@ Page({
   uploadSuccess(e) {
     console.log('upload success', e.detail)
   },
+
+
   bindRegionChange: function (e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
