@@ -177,7 +177,8 @@ Page({
               cpDetail: '',
               region: '',
               cpAdress: '',
-              imgAll: ''
+              imgAll: '',
+              selectFile: ''
             })
           }, 1500)
         }
