@@ -12,7 +12,6 @@ Page({
     cpDetail: '',
     files: [],
     urlArr: [],
-    imgAll: [],
     cpAdress: '',
     region: []
   },
@@ -177,8 +176,7 @@ Page({
               cpDetail: '',
               region: '',
               cpAdress: '',
-              imgAll: '',
-              selectFile: ''
+              files: ''
             })
           }, 1500)
         }
