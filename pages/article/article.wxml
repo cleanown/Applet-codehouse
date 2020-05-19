@@ -3,13 +3,15 @@
 <view class="home">
   <!-- 公司详情 -->
   <view class="cp">
-    <image wx:if="{{userinfo.role>1 && isverify}}" class="cp-bg" mode="aspectFit" src="../../images/adopt.049203d3.png" />
-    <image wx:if="{{userinfo.role>1 && !isverify}}" class="cp-bg" mode="aspectFit" src="../../images/pass.62c6b7e8.png" />
-    <view class="cpname">{{company.companyname}}</view>
-    <view class="cpdetail">{{company.companydetail}}</view>
+    <view class="cp-states">
+      <image wx:if="{{userinfo.role>1 && isverify}}" class="cp-bg" mode="aspectFit" src="../../images/adopt.049203d3.png" />
+      <image wx:if="{{userinfo.role>1 && !isverify}}" class="cp-bg" mode="aspectFit" src="../../images/pass.62c6b7e8.png" />
+      <view class="cpname">{{company.companyname}}</view>
+      <view class="cpdetail">{{company.companydetail}}</view>
+    </view>
     <view class="cpimg">
       <view class="cpimg-item" wx:for="{{company.imgs}}" wx:key="index">
-        <cover-image class="cpimg-box" mode="aspectFit" src="{{item}}"></cover-image>
+        <cover-image class="cpimg-box" bindtap="imgClick" data-index="{{index}}" mode="aspectFit" src="{{item}}"></cover-image>
       </view>
     </view>
     <view class="adress">
@@ -93,7 +95,6 @@
               </view>
             </view>
           </view>
-
         </view>
       </view>
     </view>
@@ -109,3 +110,4 @@
 <mp-dialog style="color: red;text-align: center" title="注意！！！" show="{{dialogShowDelete}}" bindbuttontap="tapDialogButtonDelete" buttons="{{buttonsDelete}}">
   <view>确定删除该文章?</view>
 </mp-dialog>
+<mp-gallery show="{{show}}" bindchange="change" img-urls="{{imgUrls}}" showDelete="{{false}}" hide-on-click="{{true}}" current="{{current}}"></mp-gallery>

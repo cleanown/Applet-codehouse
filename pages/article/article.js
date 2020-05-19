@@ -30,8 +30,18 @@ Page({
     buttonsDelete: [{text: '取消'}, {text: '确定'}],
     dialogShowDelete: false,
     judgeicon: '',
-    judgecolor: ''
-
+    judgecolor: '',
+    imgUrls: [],
+    show: false,
+    current: 0
+  },
+  // 图片预览
+  imgClick: function (e) {
+    console.log(e.target.dataset.index)
+    this.setData({
+      show: true,
+      current: e.target.dataset.index
+    })
   },
   // 收藏
   star: function () {
@@ -249,7 +259,10 @@ Page({
       })
     }
   },
-
+  // 图片预览
+  change(e) {
+    console.log('current index has changed', e.detail)
+  },
 
   /**
    * 生命周期函数--监听页面加载
@@ -261,7 +274,7 @@ Page({
     this.setData({
       companyid: options.id,
       userinfo: app.globalData.userinfo,
-      userid: app.globalData.userinfo._id
+      userid: app.globalData.userinfo._id,
     })
     // console.log(this.data.companyid)
     request.get(companydetail, {
@@ -275,7 +288,8 @@ Page({
         this.setData({
           company: res.data,
           isverify: res.data.isverify,
-          releaseTime: res.data.meta.createAt.slice(0,10) + ' ' + res.data.meta.createAt.slice(11,19)
+          releaseTime: res.data.meta.createAt.slice(0,10) + ' ' + res.data.meta.createAt.slice(11,19),
+          imgUrls: res.data.imgs
         })
         console.log('%c公司信息详情:','color: yellow')
         console.log(this.data.company)
@@ -311,10 +325,8 @@ Page({
         if (res.msg === '查询成功') {
           this.setData ({
             commentshow: true,
+            comment: res.data,
             commentnum: res.data.length
-          })
-          this.setData({
-            comment: res.data
           })
           console.log('%c评论列表:','color: yellow')
           console.log(this.data.comment)

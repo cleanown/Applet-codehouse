@@ -1,7 +1,8 @@
 {
   "usingComponents": {
     "mp-dialog": "../../miniprogram_npm/weui-miniprogram/dialog/dialog",
-    "mp-icon": "../../miniprogram_npm/weui-miniprogram/icon/icon"
+    "mp-icon": "../../miniprogram_npm/weui-miniprogram/icon/icon",
+    "mp-gallery": "../../miniprogram_npm/weui-miniprogram/gallery/gallery"
   },
   "navigationBarTitleText": "详情"
 }
