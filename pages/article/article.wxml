@@ -7,6 +7,11 @@
     <image wx:if="{{userinfo.role>1 && !isverify}}" class="cp-bg" mode="aspectFit" src="../../images/pass.62c6b7e8.png" />
     <view class="cpname">{{company.companyname}}</view>
     <view class="cpdetail">{{company.companydetail}}</view>
+    <view class="cpimg">
+      <view class="cpimg-item" wx:for="{{company.imgs}}" wx:key="index">
+        <cover-image class="cpimg-box" mode="aspectFit" src="{{item}}"></cover-image>
+      </view>
+    </view>
     <view class="adress">
       <text style="font-weight: bolder">公司地址：</text>
       <text style="color:#666">{{company.province}}/</text>
