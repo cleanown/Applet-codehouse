@@ -1,6 +1,7 @@
 // pages/release/release.js
+const app = getApp()
 import request from '../../api/request'
-import { release, img } from '../../api/api'
+import { release } from '../../api/api'
 Page({
 
   /**
@@ -70,25 +71,39 @@ Page({
     console.log('upload files', files)
     // 文件上传的函数，返回一个promise
     return new Promise((resolve, reject) => {
-      wx.uploadFile({
-        filePath: files.tempFilePaths[0],
-        name: 'file',
-        url: 'https://api.cleanown.cn/upload/img',
-        header: {
-          'Content-Type': 'application/json; charset=UTF-8',
-          'authorization': wx.getStorageSync('token')
-        },
-        success: function (res) {
-          console.log('%c上传状态:','color: yellow')
-          const re = res.data
-          const result = JSON.parse(re)
-          console.log(result)
-          const urls = files
-          setTimeout(() => {
-            resolve({urls})
-          },1500)
-        }
+      var tempFilePaths = files.tempFilePaths
+      var that = this
+      that.setData({
+        urlArr: []
       })
+      var object = {}
+      for (var i = 0; i < tempFilePaths.length; i++) {
+        console.log('%c上传中。。。','color: yellow')
+        wx.uploadFile({
+          filePath: files.tempFilePaths[i],
+          name: 'file',
+          url: 'https://api.cleanown.cn/upload/img',
+          header: {
+            'Content-Type': 'application/json; charset=UTF-8',
+            'authorization': wx.getStorageSync('token')
+          },
+          success: function (res) {
+            console.log('%c上传状态:', 'color: yellow')
+            if (res.statusCode === 200) {
+              const result = JSON.parse(res.data)
+              console.log(result)
+              var url = result.data.path
+              that.setData({
+                urlArr: that.data.urlArr.concat(app.globalData.imgprefix + url)
+              })
+              object['urls'] = that.data.urlArr
+              if (that.data.urlArr.length == tempFilePaths.length) {
+                resolve(object)
+              }
+            }
+          }
+        })
+      }
     })
   },
   uploadError(e) {
