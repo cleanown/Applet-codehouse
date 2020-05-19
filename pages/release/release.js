@@ -11,6 +11,8 @@ Page({
     cpName: '',
     cpDetail: '',
     files: [],
+    urlArr: [],
+    imgAll: [],
     cpAdress: '',
     region: []
   },
@@ -74,7 +76,7 @@ Page({
     return new Promise((resolve, reject) => {
       var tempFilePaths = files.tempFilePaths
       var that = this
-      this.setData({
+      that.setData({
         urlArr: []
       })
       var object = {}
@@ -175,7 +177,7 @@ Page({
               cpDetail: '',
               region: '',
               cpAdress: '',
-              urlArr: ''
+              imgAll: ''
             })
           }, 1500)
         }
