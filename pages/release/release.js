@@ -58,6 +58,7 @@ Page({
     })
   },
   previewImage: function (e) {
+    console.log(e)
     wx.previewImage({
       current: e.currentTarget.id, // 当前显示图片的http链接
       urls: this.data.files // 需要预览的图片http链接列表
@@ -73,7 +74,7 @@ Page({
     return new Promise((resolve, reject) => {
       var tempFilePaths = files.tempFilePaths
       var that = this
-      that.setData({
+      this.setData({
         urlArr: []
       })
       var object = {}
@@ -112,6 +113,13 @@ Page({
   uploadSuccess(e) {
     console.log('upload success', e.detail)
   },
+  binddelete(e) {
+    console.log('upload delete', e.detail)
+    this.setData({
+      urldelete: this.data.urlArr.splice(e.detail.index,1)
+    })
+    console.log(this.data.urlArr)
+  },
 
 
   bindRegionChange: function (e) {
@@ -148,7 +156,8 @@ Page({
         companydetail: this.data.cpDetail,
         province: this.data.region.slice(0,1).join(),
         city: this.data.region.slice(1,2).join(),
-        address: this.data.cpAdress
+        address: this.data.cpAdress,
+        imgs: this.data.urlArr
       }
       request.post(release, data).then((res) => {
         console.log(res)
@@ -164,7 +173,8 @@ Page({
               cpName: '',
               cpDetail: '',
               region: '',
-              cpAdress: ''
+              cpAdress: '',
+              urlArr: ''
             })
           }, 1500)
         }
