@@ -1,4 +1,22 @@
 /* pages/release/release.wxss */
+.token{
+  position: fixed;
+  box-sizing: border-box;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.token-text{
+  text-align: center;
+  margin-bottom: 20px;
+}
+.token-btn{
+  background-color: #9575CD;
+  color: #fff;
+}
 .home{
   width: 100%;
   box-sizing: border-box;

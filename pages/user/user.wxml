@@ -11,15 +11,15 @@
     </view>
     <view class="userlist">
       <view class="userlist-box">
-        <view class="userlist-box-num">456</view>
+        <view class="userlist-box-num">0</view>
         <view class="userlist-box-desc">获赞</view>
       </view>|
       <view class="userlist-box">
-        <view class="userlist-box-num">66</view>
+        <view class="userlist-box-num">0</view>
         <view class="userlist-box-desc">评论</view>
       </view>|
       <view class="userlist-box">
-        <view class="userlist-box-num">92</view>
+        <view class="userlist-box-num">0</view>
         <view class="userlist-box-desc">我的文章</view>
       </view>
     </view>
@@ -32,7 +32,13 @@
       </mp-cell>
     </mp-cells>
   </view>
-  <view class="userbtn">
+  <view wx:if="{{token == ''}}" class="token">
+      <view>
+        <view class="token-text">登录后查看个人信息</view>
+        <button class="token-btn" hover-class="hover-class" bindtap="loginGo">登录</button>
+      </view>
+    </view>
+  <view class="userbtn" wx:else>
     <button style="width: 100%;font-weight: normal" hover-class="hover-class" bindtap="loginGo">退出登录</button>
   </view>
 </view>

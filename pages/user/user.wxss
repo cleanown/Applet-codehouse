@@ -25,6 +25,7 @@
   border-radius: 100%;
   width: 100%;
   height: 100%;
+  box-shadow: 1px 1px 1px #000;
 }
 
 .userinfo-head-text {
@@ -73,6 +74,24 @@
 }
 button{
   background-color: #9575CD;
+}
+.token {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.token-text {
+  margin: 10px;
+  text-align: center;
+  opacity: 0.8;
+}
+
+.token-btn {
+  background-color: #9575CD;
+  color: #fff;
+  margin: 20px;
+  font-weight: normal;
 }
 .hover-class{
   background-color: #673AB7;

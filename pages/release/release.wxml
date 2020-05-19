@@ -1,5 +1,11 @@
 <!--pages/release/release.wxml-->
-<view class="home">
+<view wx:if="{{token == ''}}" class="token">
+  <view>
+    <view class="token-text">登录后可发布</view>
+    <button class="token-btn" style="font-weight: normal" hover-class="hover-class" bindtap="loginGo">登录</button>
+  </view>
+</view>
+<view class="home" wx:else>
 	<view class="nav">
 		<view class="company">公司：</view>
 		<input class="cpnameInput" maxlength="15" placeholder="最大输入长度为15" bindinput="cpName" value="{{cpName}}" />

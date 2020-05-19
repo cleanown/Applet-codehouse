@@ -8,6 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    token: '',
     companyid: '',
     company: {},
     releaseTime: '',
@@ -35,6 +36,11 @@ Page({
     show: false,
     current: 0
   },
+  loginGo: function () {
+    wx.redirectTo({
+      url: '/pages/login/login',
+    })
+  },
   // 图片预览
   imgClick: function (e) {
     console.log(e.target.dataset.index)
@@ -45,47 +51,68 @@ Page({
   },
   // 收藏
   star: function () {
-    if (this.data.starcolor === 'black') {
+    if (this.data.token == '') {
       wx.showToast({
-        title: '收藏成功',
+        title: '未登录',
+        icon: 'none'
       })
     } else {
-      wx.showToast({
-        title: '取消收藏',
+      if (this.data.starcolor === 'black') {
+        wx.showToast({
+          title: '收藏成功',
+        })
+      } else {
+        wx.showToast({
+          title: '取消收藏',
+        })
+      }
+      this.setData ({
+        starcolor: this.data.starcolor === 'black' ? '#651FFF' : 'black',
+        startype: this.data.startype === 'outline' ? 'field' : 'outline'
       })
     }
-    this.setData ({
-      starcolor: this.data.starcolor === 'black' ? '#651FFF' : 'black',
-      startype: this.data.startype === 'outline' ? 'field' : 'outline'
-    })
   },
   // 喜欢
   like: function () {
-    if (this.data.likecolor === 'black') {
+    if (this.data.token == '') {
       wx.showToast({
-        title: '点赞成功',
-      })
-      this.setData({
-        likenum: this.data.likenum += 1
+        title: '未登录',
+        icon: 'none'
       })
     } else {
-      wx.showToast({
-        title: '取消点赞',
-      })
-      this.setData({
-        likenum: this.data.likenum -= 1
+      if (this.data.likecolor === 'black') {
+        wx.showToast({
+          title: '点赞成功',
+        })
+        this.setData({
+          likenum: this.data.likenum += 1
+        })
+      } else {
+        wx.showToast({
+          title: '取消点赞',
+        })
+        this.setData({
+          likenum: this.data.likenum -= 1
+        })
+      }
+      this.setData ({
+        likecolor: this.data.likecolor === 'black' ? '#651FFF' : 'black',
+        liketype: this.data.liketype === 'outline' ? 'field' : 'outline'
       })
     }
-    this.setData ({
-      likecolor: this.data.likecolor === 'black' ? '#651FFF' : 'black',
-      liketype: this.data.liketype === 'outline' ? 'field' : 'outline'
-    })
   },
   // 消息发送窗口打开关闭
   comment: function () {
-    this.setData({
-      inputshow: true
-    })
+    if (this.data.token == '') {
+      wx.showToast({
+        title: '未登录',
+        icon: 'none'
+      })
+    } else {
+      this.setData({
+        inputshow: true
+      })
+    }
   },
   inputClose: function () {
     this.setData({
@@ -273,8 +300,7 @@ Page({
     })
     this.setData({
       companyid: options.id,
-      userinfo: app.globalData.userinfo,
-      userid: app.globalData.userinfo._id,
+      
     })
     // console.log(this.data.companyid)
     request.get(companydetail, {
@@ -319,6 +345,22 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var token = wx.getStorageSync('token')
+    console.log('%ctoken值：','color: yellow')
+    console.log(token)
+    this.setData({
+      token: token
+    })
+    if (token !== '') {
+      this.setData({
+        userinfo: app.globalData.userinfo,
+        userid: app.globalData.userinfo._id,
+      })
+      this.commentGet()
+    }
+  },
+
+  commentGet: function () {
     request.get(`${commentget}${this.data.companyid}`).then((res) => {
       // console.log(res)
       if (res.code === 200) {
@@ -347,7 +389,6 @@ Page({
       })
     })
   },
-
   /**
    * 生命周期函数--监听页面隐藏
    */

@@ -127,9 +127,7 @@
   font-weight: normal;
 }
 
-.hover-class {
-  background-color: rgb(4, 4, 175);
-}
+
 
 .comment {
   box-sizing: border-box;
@@ -141,6 +139,25 @@
   border-bottom: 1px dashed #999;
   padding: 8px;
   font-size: 20px;
+}
+
+.token {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.token-text {
+  margin: 10px;
+  text-align: center;
+  opacity: 0.8;
+}
+
+.token-btn {
+  background-color: blue;
+  color: #fff;
+  margin: 20px;
+  font-weight: normal;
 }
 
 .comment-item {
@@ -219,4 +236,8 @@
 
 .userchange-icon {
   margin-left: 10px;
+}
+
+.hover-class {
+  background-color: rgb(4, 4, 175);
 }

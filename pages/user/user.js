@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    token: '',
     userinfo: {},
     userfun: [
       {
@@ -88,6 +89,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var token = wx.getStorageSync('token')
+    this.setData({
+      token: token
+    })
     this.setData({
       userinfo: app.globalData.userinfo
     })

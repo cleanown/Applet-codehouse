@@ -16,7 +16,12 @@ Page({
       title: '',
     })
     this.getCompanylsit()
-    this.userinfoGet()
+    var token = wx.getStorageSync('token')
+    console.log('%ctoken值：','color: yellow')
+    console.log(token)
+    if (token !== '') {
+      this.userinfoGet()
+    }
   },
   // 获取列表
   getCompanylsit: function () {

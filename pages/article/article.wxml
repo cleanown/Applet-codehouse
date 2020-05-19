@@ -52,53 +52,61 @@
   <!-- 评论内容 -->
   <view class="comment">
     <view class="comment-title">评论 :</view>
-    <view wx:if="{{commentshow}}">
-      <view class="comment-item" wx:for="{{comment}}" wx:key="index">
-        <view class="comment-items">
-          <view class="comment-items-user">
-            <view class="comment-item-user-head">
-              <image class="comment-item-user-head-img" src="{{item.userinfo.headimg}}"></image>
-            </view>
-            <view class="comment-item-user-name">{{item.userinfo.username}}</view>
-          </view>
-          <view class="comment-detail" style="font-weight: bolder">
-            {{item.commentdetail}}
-          </view>
-          <view class="comment-last" style="margin-bottom: 30px;">
-            <view class="comment-last-set">
-              <view class="comment-last-set-reply" bindtap="reply" data-commentid="{{item._id}}" data-linkid="{{item.userinfo._id}}" data-linkname="{{item.userinfo.username}}">回复</view>
-              <view class="comment-last-set-delete">删除</view>
-            </view>
-            <view class="comment-last-time">评论时间：{{filter.dateFormatStr(item.meta.createAt)}}</view>
-          </view>
-          <!-- 子评论，回复 -->
-          <view style="border-top: 1px dotted #ccc;padding:20px;" wx:for="{{item.children}}" wx:for-item="children" wx:key="index" wx:if="item.children.length>0" >
-            <view class="comment-items">
-              <view class="comment-items-user">
-                <view class="comment-item-user-head">
-                  <image class="comment-item-user-head-img" src="{{children.userinfo.headimg}}"></image>
-                </view>
-                <view class="comment-item-user-name" style="color: #999">{{children.userinfo.username}}</view>
+    <view wx:if="{{token == ''}}" class="token">
+      <view>
+        <view class="token-text">登录后查看评论</view>
+        <button class="token-btn" hover-class="hover-class" bindtap="loginGo">登录</button>
+      </view>
+    </view>
+    <view wx:else>
+      <view wx:if="{{commentshow}}">
+        <view class="comment-item" wx:for="{{comment}}" wx:key="index">
+          <view class="comment-items">
+            <view class="comment-items-user">
+              <view class="comment-item-user-head">
+                <image class="comment-item-user-head-img" src="{{item.userinfo.headimg}}"></image>
               </view>
-              <view class="comment-detail">
-                <view wx:if="{{item.userid!==children.linkid}}" style="float: left;color: #B388FF;">@{{children.linkname}}</view>
-                <view>
-                  {{children.commentdetail}}
-                </view>
+              <view class="comment-item-user-name">{{item.userinfo.username}}</view>
+            </view>
+            <view class="comment-detail" style="font-weight: bolder">
+              {{item.commentdetail}}
+            </view>
+            <view class="comment-last" style="margin-bottom: 30px;">
+              <view class="comment-last-set">
+                <view class="comment-last-set-reply" bindtap="reply" data-commentid="{{item._id}}" data-linkid="{{item.userinfo._id}}" data-linkname="{{item.userinfo.username}}">回复</view>
+                <view class="comment-last-set-delete">删除</view>
               </view>
-              <view class="comment-last">
-                <view class="comment-last-set">
-                  <view class="comment-last-set-reply" bindtap="childrenReply" data-commentid="{{item._id}}" data-linkid="{{children.userinfo._id}}" data-linkname="{{children.userinfo.username}}">回复</view>
-                  <view class="comment-last-set-delete">删除</view>
+              <view class="comment-last-time">评论时间：{{filter.dateFormatStr(item.meta.createAt)}}</view>
+            </view>
+            <!-- 子评论，回复 -->
+            <view style="border-top: 1px dotted #ccc;padding:20px;" wx:for="{{item.children}}" wx:for-item="children" wx:key="index" wx:if="item.children.length>0" >
+              <view class="comment-items">
+                <view class="comment-items-user">
+                  <view class="comment-item-user-head">
+                    <image class="comment-item-user-head-img" src="{{children.userinfo.headimg}}"></image>
+                  </view>
+                  <view class="comment-item-user-name" style="color: #999">{{children.userinfo.username}}</view>
                 </view>
-                <view class="comment-last-time">评论时间：{{filter.dateFormatStr(children.meta.createAt)}}</view>
+                <view class="comment-detail">
+                  <view wx:if="{{item.userid!==children.linkid}}" style="float: left;color: #B388FF;">@{{children.linkname}}</view>
+                  <view>
+                    {{children.commentdetail}}
+                  </view>
+                </view>
+                <view class="comment-last">
+                  <view class="comment-last-set">
+                    <view class="comment-last-set-reply" bindtap="childrenReply" data-commentid="{{item._id}}" data-linkid="{{children.userinfo._id}}" data-linkname="{{children.userinfo.username}}">回复</view>
+                    <view class="comment-last-set-delete">删除</view>
+                  </view>
+                  <view class="comment-last-time">评论时间：{{filter.dateFormatStr(children.meta.createAt)}}</view>
+                </view>
               </view>
             </view>
           </view>
         </view>
       </view>
+      <view wx:if="{{!commentshow}}" class="comment-none">暂无评论！</view>
     </view>
-    <view wx:if="{{!commentshow}}" class="comment-none">暂无评论！</view>
   </view>
   <!-- 删除审核按钮 -->
   <view class="userchange" wx:if="{{userinfo.role>1}}">

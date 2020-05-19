@@ -4,10 +4,6 @@ const request = (url, options) => {
   return new Promise((resolve, reject) => {
     if (wx.getStorageSync('token')) {
     var token = wx.getStorageSync('token')
-    } else {
-      wx.reLaunch({
-        url: '/pages/login/login'
-      })
     }
 
     // var token = wx.getStorageSync('token')
