@@ -1,5 +1,11 @@
 <!--pages/user/user.wxml-->
-<view class="home">
+<view wx:if="{{token == ''}}" class="token">
+  <view>
+    <view class="token-text">登录后查看个人信息</view>
+    <button class="token-btn" hover-class="hover-class" bindtap="loginGo">登录</button>
+  </view>
+</view>
+<view class="home" wx:else>
   <view class="userinfo">
     <view class="userinfo-head">
       <view class="userinfo-head-img">
@@ -32,13 +38,7 @@
       </mp-cell>
     </mp-cells>
   </view>
-  <view wx:if="{{token == ''}}" class="token">
-      <view>
-        <view class="token-text">登录后查看个人信息</view>
-        <button class="token-btn" hover-class="hover-class" bindtap="loginGo">登录</button>
-      </view>
-    </view>
-  <view class="userbtn" wx:else>
+  <view class="userbtn">
     <button style="width: 100%;font-weight: normal" hover-class="hover-class" bindtap="loginGo">退出登录</button>
   </view>
 </view>
