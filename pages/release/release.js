@@ -112,6 +112,7 @@ Page({
   },
   uploadSuccess(e) {
     console.log('upload success', e.detail)
+    console.log(this.data.urlArr)
   },
   binddelete(e) {
     console.log('upload delete', e.detail)
