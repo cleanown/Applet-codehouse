@@ -11,7 +11,7 @@
     </view>
     <view class="cpimg">
       <view class="cpimg-item" wx:for="{{company.imgs}}" wx:key="index">
-        <cover-image class="cpimg-box" bindtap="imgClick" data-index="{{index}}" mode="aspectFit" src="{{item}}"></cover-image>
+        <image class="cpimg-box" mode="widthFix" bindtap="imgClick" data-index="{{index}}" src="{{item}}" />
       </view>
     </view>
     <view class="adress">
@@ -118,4 +118,4 @@
 <mp-dialog style="color: red;text-align: center" title="注意！！！" show="{{dialogShowDelete}}" bindbuttontap="tapDialogButtonDelete" buttons="{{buttonsDelete}}">
   <view>确定删除该文章?</view>
 </mp-dialog>
-<mp-gallery show="{{show}}" bindchange="change" img-urls="{{imgUrls}}" showDelete="{{false}}" hide-on-click="{{true}}" current="{{current}}"></mp-gallery>
+<mp-gallery style="z-index: 5;" show="{{show}}" bindchange="change" img-urls="{{imgUrls}}" showDelete="{{false}}" hide-on-click="{{true}}" current="{{current}}"></mp-gallery>

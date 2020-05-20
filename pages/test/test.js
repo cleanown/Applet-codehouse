@@ -5,63 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    showActionsheet: false,
-    allStyle: '',
-    checked: '',
-    disabled: false,
-    nowDate: '',
-    oldDate: '',
-    newDate: '',
-  },
 
-
-  testClick: function () {
-    this.setData({
-      showActionsheet: true
-    })
-  },
-  close: function () {
-    this.setData({
-      showActionsheet: false
-    })
-  },
-  btnClick(e) {
-    console.log(e.detail.value)
-    this.close()
-  },
-  switchAll: function (e) {
-    console.log(`%cswitch全部（状态）：${e.detail.value}`,'color: yellow')
-    if (e.detail.value == true) {
-      this.setData({
-        disabled: true,
-        checked: false,
-        allStyle: '#999',
-        oldDate: '',
-        newDate: ''
-      })
-    } else {
-      this.setData({
-        disabled: false,
-        allStyle: ''
-      })
-    }
-  },
-  // 多选
-  bindbuttontap: function (e) {
-    console.log(e.detail.value)
-  },
-  // 日期
-  bindDateChangeOld: function (e) {
-    console.log(e.detail.value)
-    this.setData({
-      oldDate: e.detail.value
-    })
-  },
-  bindDateChangeNew: function (e) {
-    console.log(e.detail.value)
-    this.setData({
-      newDate: e.detail.value
-    })
   },
 
 

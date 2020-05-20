@@ -14,5 +14,4 @@
     <text>忘记密码</text> |
     <text bindtap="registerGo">无账号</text>
   </view>
-  <view style="margin: 20px;color: #999">说明：该项目尚未做游客浏览功能，请使用者注册登录使用，届时改善该项目</view>
 </view>

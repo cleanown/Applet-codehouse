@@ -36,14 +36,14 @@
 
 .cpimg {
   width: 100%;
-  box-sizing: border-box;
   display: flex;
   flex-wrap: wrap;
 }
 
 .cpimg-item {
-  width: 30%;
   box-sizing: border-box;
+  width: 30%;
+  height: 30%;
   padding: 5px;
 }
 
