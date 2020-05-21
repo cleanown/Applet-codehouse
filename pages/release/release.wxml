@@ -5,7 +5,12 @@
     <button class="token-btn" style="font-weight: normal" hover-class="hover-class" bindtap="loginGo">登录</button>
   </view>
 </view>
-<view class="home" wx:else>
+<view wx:else class="token">
+  <view>
+    <view class="token-text">建设中。。。</view>
+  </view>
+</view>
+<!-- <view class="home">
 	<view class="nav">
 		<view class="company">公司：</view>
 		<input class="cpnameInput" maxlength="15" placeholder="最大输入长度为15" bindinput="cpName" value="{{cpName}}" />
@@ -29,4 +34,4 @@
     <input class="cpadressInput" maxlength="10" placeholder="请尽量详细" bindinput="cpAdress" value="{{cpAdress}}"/>
   </view>
   <button class="release-btn" style="width:100%; font-weight:normal;" hover-class="hover-class" bindtap="release">发布</button>
-</view>
+</view> -->
