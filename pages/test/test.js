@@ -8,7 +8,21 @@ Page({
 
   },
 
-
+  btnClick: function () {
+    wx.startRecord({
+      complete: (res) => {
+        console.log(res)
+      },
+    })
+  },
+  stopClick: function () {
+    wx.stopRecord({
+      success: function (res) {
+        var localId = res.localId;
+        console.log(localId)
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

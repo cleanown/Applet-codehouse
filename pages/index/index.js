@@ -115,5 +115,8 @@ Page({
     wx.navigateTo({
       url: '/pages/article/article?id='+e.currentTarget.dataset.id+'',
     })
+  },
+  onShareAppMessage: function () {
+
   }
 })

@@ -1,20 +1,4 @@
 <view class="home">
-  <view class="item">
-    <view class="item-box">
-      <image class="item-box-img"  mode="widthFix" src="../../images/imgs/1.jpg"></image>
-    </view>
-    <view class="item-box">
-      <image class="item-box-img"  mode="widthFix" src="../../images/imgs/1.jpg"></image>
-    </view>
-    <view class="item-box">
-      <image class="item-box-img" src="../../images/imgs/1.jpg"></image>
-    </view>
-    <view class="item-box">
-      <image class="item-box-img" src="../../images/imgs/1.jpg"></image>
-    </view>
-    <view class="item-box">
-      <image class="item-box-img" src="../../images/imgs/1.jpg"></image>
-    </view>
-  </view>
+  <button bindtap="btnClick">测试</button>
+  <button bindtap="stopClick">停止</button>
 </view>
-<cover-image class="item-box-img" src="../../images/imgs/1.jpg" />

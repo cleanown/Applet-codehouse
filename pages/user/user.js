@@ -11,7 +11,7 @@ Page({
     userfun: [
       {
         imgUrl: '../../images/user/article.png',
-        fun: '发文管理',
+        fun: '文章管理',
         id: 0,
         role: 2
       },

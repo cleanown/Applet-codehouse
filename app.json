@@ -28,6 +28,12 @@
       "selectedIconPath": "./images/tabbar/search-s.png"
     },
     {
+      "pagePath": "pages/release/release",
+      "text": "发布",
+      "iconPath": "./images/tabbar/addto.png",
+      "selectedIconPath": "./images/tabbar/addto-s.png"
+    },
+    {
       "pagePath": "pages/user/user",
       "text": "个人中心",
       "iconPath": "./images/tabbar/nickname.png",
